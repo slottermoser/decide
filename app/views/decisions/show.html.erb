@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @decision.title %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @decision.user_id %>
+</p>
+
+<%= render 'discussion/show'%>
+
+<%= link_to 'Edit', edit_decision_path(@decision) %> |
+<%= link_to 'Back', decisions_path %>

@@ -1,5 +1,10 @@
 Decide::Application.routes.draw do
-  
+
+  match 'discussion/add_reply/:id' => 'discussion#add_reply', :method => 'post'
+  match 'discussion/new_comment/:id' => 'discussion#new_comment', :method => 'post'
+
+  resources :decisions
+
   root :to => 'home#index'
 
   devise_for :users

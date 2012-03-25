@@ -11,7 +11,35 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323210053) do
+ActiveRecord::Schema.define(:version => 20120324185626) do
+
+  create_table "decisions", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "decisions_participants", :id => false, :force => true do |t|
+    t.integer "decision_id"
+    t.integer "user_id"
+  end
+
+  create_table "discussion_entries", :force => true do |t|
+    t.integer  "discussion_id"
+    t.integer  "user_id"
+    t.text     "entry"
+    t.integer  "parent_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "discussions", :force => true do |t|
+    t.integer  "decision_id"
+    t.integer  "root_child"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

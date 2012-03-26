@@ -56,6 +56,7 @@ class DecisionsController < ApplicationController
   # POST /decisions.json
   def create
     @decision = Decision.new(params[:decision])
+    @decision.creator = current_user
 
     respond_to do |format|
       if @decision.save

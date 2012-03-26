@@ -9,10 +9,13 @@
 	})
 	socket = io.connect('<%= root_url[0...-1] %>:8080');
 	  socket.on('connect', function () {
+	  	socket.emit('set id', {id: <%= @discussion.id %>})
 	    socket.on('new comment', function (data) {
 	      discussion.add_new_entry(data.entry_info)
 	    });
 	    socket.on('new reply', function (data) {
+	   	  console.log(data);
+	   	  console.log(Entry.reg);
 	      Entry.reg[data.entry_info.entry.parent_id].add_child(data.entry_info);
 	    });
 	  });

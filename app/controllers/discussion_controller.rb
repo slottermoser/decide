@@ -35,8 +35,9 @@ class DiscussionController < ApplicationController
       entry_info = {
         name:new_entry.user.name,
         created_at:new_entry.created_at.strftime('%m/%d/%Y %H:%M'),
-        entry:entry.new_entry,
-        id:new_entry.id
+        entry:new_entry.entry,
+        id:new_entry.id,
+        parent_id:new_entry.parent.id
       }
       render :json => {:status => "success", :entry_info => {:entry => entry_info, :children => []}}
     else

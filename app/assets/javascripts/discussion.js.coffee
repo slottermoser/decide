@@ -4,13 +4,13 @@
 
 class Entry
   constructor: (entry_info, discussion) ->
-    console.log(entry_info)
     @children = (new Entry child, discussion for child in entry_info.children)
     entry = entry_info.entry
     @response = entry.entry
     @created = entry.created_at
     @id = entry.id
     @discussion = discussion
+    Entry.reg[@id] = this
     
   build:() ->
     @container = $('<div>')
@@ -60,12 +60,18 @@ class Entry
       (data) ->
         if data.status == 'success'
           that.children.push(new Entry data.entry_info, that.discussion)
+          socket.emit('new reply', {entry_info: data.entry_info})
           that.discussion.refresh()
         else
           console.error(data.message)
     )
+  
+  add_child:(entry_info) ->
+    @children.push(new Entry entry_info, @discussion)
+    @discussion.refresh()
     
 window.Entry = Entry
+window.Entry.reg = {}
  
 class Discussion
   constructor: (top_level_entries, options) ->

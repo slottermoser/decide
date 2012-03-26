@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IDDecisionsVC : UIViewController
+#import "IDBaseVC.h"
+
+@interface IDDecisionsVC : IDBaseVC
 
 @end

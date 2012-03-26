@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IDDecisionDetailVC : UIViewController
+#import "IDBaseVC.h"
+
+@class Decision;
+
+@interface IDDecisionDetailVC : IDBaseVC
+
+@property (nonatomic, strong) Decision * decision;
+@property (nonatomic, assign, getter=isInEditMode) BOOL editMode;
 
 @end

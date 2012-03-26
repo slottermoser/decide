@@ -14,45 +14,24 @@
 @property (strong, nonatomic) IBOutlet UITextField * usernameField;
 @property (strong, nonatomic) IBOutlet UITextField * passwordField;
 @property (strong, nonatomic) IBOutlet UIButton * loginButton;
-@property (strong, nonatomic) IBOutlet UILabel *errorLabel;
+@property (strong, nonatomic) IBOutlet UILabel * errorLabel;
 
 @end
+
 
 @implementation IDLoginVC
 
 @synthesize usernameField = _usernameField;
 @synthesize passwordField = _passwordField;
 @synthesize loginButton   = _loginButton;
-@synthesize errorLabel = _errorLabel;
+@synthesize errorLabel    = _errorLabel;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [self setUsernameField:nil];
     [self setPasswordField:nil];
     [self setLoginButton:nil];
     [self setErrorLabel:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)setErrorText:(NSString *)text {

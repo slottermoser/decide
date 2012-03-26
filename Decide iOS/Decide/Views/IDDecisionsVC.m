@@ -7,49 +7,60 @@
 //
 
 #import "IDDecisionsVC.h"
+#import "IDDecisionDetailVC.h"
+#import "Decision+Extras.h"
+#import "IDDecisionCell.h"
 
 @interface IDDecisionsVC ()
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem * logoutButton;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem * addButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem * logoutButton;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem * addButton;
 
 @end
+
 
 @implementation IDDecisionsVC
 
 @synthesize logoutButton = _logoutButton;
 @synthesize addButton    = _addButton;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
+    // TODO: Set up table view.
+    
+    
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [self setLogoutButton:nil];
     [self setAddButton:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (IBAction)logout:(id)sender {
+    
+    // !!!: I'm not sending a logout request to the web app just to keep things simple. 
+    
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    IDDecisionDetailVC * vc = [segue destinationViewController];
+    Decision * decision = nil;
+    
+    if (sender == [self addButton]) {
+        decision = [Decision createDecisionInContext:[vc moc]];
+        [vc setEditMode:YES];
+    }
+    else if ([sender isKindOfClass:[IDDecisionCell class]]) {
+        decision = [sender decision];
+    }
+    else
+        NSAssert(NO, @"Unknown sender!");
+    
+    [vc setDecision:decision];
 }
 
 @end

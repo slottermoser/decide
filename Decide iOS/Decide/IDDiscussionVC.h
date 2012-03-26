@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IDDiscussionVC : UIViewController
+#import "IDBaseVC.h"
+
+@interface IDDiscussionVC : IDBaseVC
 
 @end

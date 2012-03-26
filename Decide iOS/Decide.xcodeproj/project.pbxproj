@@ -47,6 +47,49 @@
 		E180F1A5151E5EE4009E981C /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F19A151E5EE4009E981C /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E180F1A6151E5EE4009E981C /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F19C151E5EE4009E981C /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E180F1A9151E69FE009E981C /* IDHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1A8151E69FD009E981C /* IDHTTPRequest.m */; };
+		E180F1AC151E773A009E981C /* IDBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1AB151E773A009E981C /* IDBaseVC.m */; };
+		E180F1B8151E77AF009E981C /* RBCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1B0151E77AF009E981C /* RBCoreDataManager.m */; };
+		E180F1B9151E77AF009E981C /* RBFetchedResultsTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1B3151E77AF009E981C /* RBFetchedResultsTableVC.m */; };
+		E180F1BA151E77AF009E981C /* RBManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1B5151E77AF009E981C /* RBManagedObjectContext.m */; };
+		E180F1C0151E7892009E981C /* RBSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1BF151E7892009E981C /* RBSingleton.m */; };
+		E180F1E8151E78D4009E981C /* GCD+RBExtras.c in Sources */ = {isa = PBXBuildFile; fileRef = E180F1C3151E78D4009E981C /* GCD+RBExtras.c */; };
+		E180F1EA151E78D4009E981C /* NSArray+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1C7151E78D4009E981C /* NSArray+RBExtras.m */; };
+		E180F1EB151E78D4009E981C /* NSDate+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1C9151E78D4009E981C /* NSDate+RBExtras.m */; };
+		E180F1EC151E78D4009E981C /* NSError+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1CB151E78D4009E981C /* NSError+RBExtras.m */; };
+		E180F1ED151E78D4009E981C /* NSManagedObject+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1CD151E78D4009E981C /* NSManagedObject+RBExtras.m */; };
+		E180F1EE151E78D4009E981C /* NSMutableSet+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1CF151E78D4009E981C /* NSMutableSet+RBExtras.m */; };
+		E180F1EF151E78D4009E981C /* NSObject+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1D1151E78D4009E981C /* NSObject+RBExtras.m */; };
+		E180F1F0151E78D4009E981C /* NSSet+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1D3151E78D4009E981C /* NSSet+RBExtras.m */; };
+		E180F1F1151E78D4009E981C /* NSString+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1D5151E78D4009E981C /* NSString+RBExtras.m */; };
+		E180F1F2151E78D4009E981C /* NSURL+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1D7151E78D4009E981C /* NSURL+RBExtras.m */; };
+		E180F1F4151E78D4009E981C /* UIApplication+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1DA151E78D4009E981C /* UIApplication+RBExtras.m */; };
+		E180F1F5151E78D4009E981C /* UIColor+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1DC151E78D4009E981C /* UIColor+RBExtras.m */; };
+		E180F1F6151E78D4009E981C /* UITableView+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1DE151E78D4009E981C /* UITableView+RBExtras.m */; };
+		E180F1F7151E78D4009E981C /* UITextField+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1E0151E78D4009E981C /* UITextField+RBExtras.m */; };
+		E180F1F8151E78D4009E981C /* UIView+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1E2151E78D4009E981C /* UIView+RBExtras.m */; };
+		E180F1F9151E78D4009E981C /* UIViewController+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1E4151E78D4009E981C /* UIViewController+RBExtras.m */; };
+		E180F1FA151E78D4009E981C /* UIWindow+RBExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F1E6151E78D4009E981C /* UIWindow+RBExtras.m */; };
+		E180F215151E792E009E981C /* RBBaseEmailBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F200151E792E009E981C /* RBBaseEmailBuilder.m */; };
+		E180F216151E792E009E981C /* RBBaseLogFile.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F202151E792E009E981C /* RBBaseLogFile.m */; };
+		E180F217151E792E009E981C /* RBBugReportEmailBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F204151E792E009E981C /* RBBugReportEmailBuilder.m */; };
+		E180F218151E792E009E981C /* RBExtendedLogFile.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F207151E792E009E981C /* RBExtendedLogFile.m */; };
+		E180F219151E792E009E981C /* RBLogFileFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F20A151E792E009E981C /* RBLogFileFactory.m */; };
+		E180F21A151E792E009E981C /* RBLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F20C151E792E009E981C /* RBLogger.m */; };
+		E180F21B151E792E009E981C /* RBReportEmailerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F20E151E792E009E981C /* RBReportEmailerVC.m */; };
+		E180F21C151E792E009E981C /* RBReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F210151E792E009E981C /* RBReporter.m */; };
+		E180F21D151E792E009E981C /* RBStandardAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F212151E792E009E981C /* RBStandardAttachment.m */; };
+		E180F220151E7950009E981C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E180F21F151E7950009E981C /* CoreData.framework */; };
+		E180F23A151E7CB5009E981C /* Decision+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F239151E7CB5009E981C /* Decision+Extras.m */; };
+		E180F23D151E7F41009E981C /* IDDecisionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F23C151E7F41009E981C /* IDDecisionCell.m */; };
+		E180F240151E80C9009E981C /* IDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F23F151E80C9009E981C /* IDObject.m */; };
+		E180F243151E80CA009E981C /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F242151E80CA009E981C /* Decision.m */; };
+		E180F246151E80CA009E981C /* Discussion.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F245151E80CA009E981C /* Discussion.m */; };
+		E180F249151E80CA009E981C /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F248151E80CA009E981C /* Preferences.m */; };
+		E180F24C151E80CB009E981C /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F24B151E80CB009E981C /* Option.m */; };
+		E180F24F151E80CB009E981C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F24E151E80CB009E981C /* User.m */; };
+		E180F252151E80CB009E981C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F251151E80CB009E981C /* Message.m */; };
+		E180F255151E80CB009E981C /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F254151E80CB009E981C /* Group.m */; };
+		E180F258151E80E8009E981C /* IDObject+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F257151E80E8009E981C /* IDObject+Extras.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +164,103 @@
 		E180F19C151E5EE4009E981C /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		E180F1A7151E69FD009E981C /* IDHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDHTTPRequest.h; sourceTree = "<group>"; };
 		E180F1A8151E69FD009E981C /* IDHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDHTTPRequest.m; sourceTree = "<group>"; };
+		E180F1AA151E773A009E981C /* IDBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDBaseVC.h; path = Views/IDBaseVC.h; sourceTree = "<group>"; };
+		E180F1AB151E773A009E981C /* IDBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDBaseVC.m; path = Views/IDBaseVC.m; sourceTree = "<group>"; };
+		E180F1AE151E77AF009E981C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E180F1AF151E77AF009E981C /* RBCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBCoreDataManager.h; sourceTree = "<group>"; };
+		E180F1B0151E77AF009E981C /* RBCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBCoreDataManager.m; sourceTree = "<group>"; };
+		E180F1B1151E77AF009E981C /* RBCoreDataManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBCoreDataManagerDelegate.h; sourceTree = "<group>"; };
+		E180F1B2151E77AF009E981C /* RBFetchedResultsTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBFetchedResultsTableVC.h; sourceTree = "<group>"; };
+		E180F1B3151E77AF009E981C /* RBFetchedResultsTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBFetchedResultsTableVC.m; sourceTree = "<group>"; };
+		E180F1B4151E77AF009E981C /* RBManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBManagedObjectContext.h; sourceTree = "<group>"; };
+		E180F1B5151E77AF009E981C /* RBManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBManagedObjectContext.m; sourceTree = "<group>"; };
+		E180F1B6151E77AF009E981C /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		E180F1BD151E7892009E981C /* RBSimpleSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSimpleSingleton.h; sourceTree = "<group>"; };
+		E180F1BE151E7892009E981C /* RBSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBSingleton.h; sourceTree = "<group>"; };
+		E180F1BF151E7892009E981C /* RBSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBSingleton.m; sourceTree = "<group>"; };
+		E180F1C2151E78D4009E981C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		E180F1C3151E78D4009E981C /* GCD+RBExtras.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "GCD+RBExtras.c"; sourceTree = "<group>"; };
+		E180F1C4151E78D4009E981C /* GCD+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GCD+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1C5151E78D4009E981C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E180F1C6151E78D4009E981C /* NSArray+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1C7151E78D4009E981C /* NSArray+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1C8151E78D4009E981C /* NSDate+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1C9151E78D4009E981C /* NSDate+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1CA151E78D4009E981C /* NSError+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1CB151E78D4009E981C /* NSError+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1CC151E78D4009E981C /* NSManagedObject+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1CD151E78D4009E981C /* NSManagedObject+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1CE151E78D4009E981C /* NSMutableSet+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1CF151E78D4009E981C /* NSMutableSet+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1D0151E78D4009E981C /* NSObject+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1D1151E78D4009E981C /* NSObject+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1D2151E78D4009E981C /* NSSet+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1D3151E78D4009E981C /* NSSet+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSSet+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1D4151E78D4009E981C /* NSString+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1D5151E78D4009E981C /* NSString+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1D6151E78D4009E981C /* NSURL+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1D7151E78D4009E981C /* NSURL+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1D8151E78D4009E981C /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		E180F1D9151E78D4009E981C /* UIApplication+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1DA151E78D4009E981C /* UIApplication+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1DB151E78D4009E981C /* UIColor+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1DC151E78D4009E981C /* UIColor+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1DD151E78D4009E981C /* UITableView+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1DE151E78D4009E981C /* UITableView+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1DF151E78D4009E981C /* UITextField+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1E0151E78D4009E981C /* UITextField+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1E1151E78D4009E981C /* UIView+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1E2151E78D4009E981C /* UIView+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1E3151E78D4009E981C /* UIViewController+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1E4151E78D4009E981C /* UIViewController+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1E5151E78D4009E981C /* UIWindow+RBExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+RBExtras.h"; sourceTree = "<group>"; };
+		E180F1E6151E78D4009E981C /* UIWindow+RBExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+RBExtras.m"; sourceTree = "<group>"; };
+		E180F1FD151E792E009E981C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E180F1FE151E792E009E981C /* RBAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBAttachment.h; sourceTree = "<group>"; };
+		E180F1FF151E792E009E981C /* RBBaseEmailBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBaseEmailBuilder.h; sourceTree = "<group>"; };
+		E180F200151E792E009E981C /* RBBaseEmailBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBaseEmailBuilder.m; sourceTree = "<group>"; };
+		E180F201151E792E009E981C /* RBBaseLogFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBaseLogFile.h; sourceTree = "<group>"; };
+		E180F202151E792E009E981C /* RBBaseLogFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBaseLogFile.m; sourceTree = "<group>"; };
+		E180F203151E792E009E981C /* RBBugReportEmailBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBBugReportEmailBuilder.h; sourceTree = "<group>"; };
+		E180F204151E792E009E981C /* RBBugReportEmailBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBBugReportEmailBuilder.m; sourceTree = "<group>"; };
+		E180F205151E792E009E981C /* RBEmailBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBEmailBuilder.h; sourceTree = "<group>"; };
+		E180F206151E792E009E981C /* RBExtendedLogFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBExtendedLogFile.h; sourceTree = "<group>"; };
+		E180F207151E792E009E981C /* RBExtendedLogFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBExtendedLogFile.m; sourceTree = "<group>"; };
+		E180F208151E792E009E981C /* RBLogFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLogFile.h; sourceTree = "<group>"; };
+		E180F209151E792E009E981C /* RBLogFileFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLogFileFactory.h; sourceTree = "<group>"; };
+		E180F20A151E792E009E981C /* RBLogFileFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLogFileFactory.m; sourceTree = "<group>"; };
+		E180F20B151E792E009E981C /* RBLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLogger.h; sourceTree = "<group>"; };
+		E180F20C151E792E009E981C /* RBLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLogger.m; sourceTree = "<group>"; };
+		E180F20D151E792E009E981C /* RBReportEmailerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBReportEmailerVC.h; sourceTree = "<group>"; };
+		E180F20E151E792E009E981C /* RBReportEmailerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBReportEmailerVC.m; sourceTree = "<group>"; };
+		E180F20F151E792E009E981C /* RBReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBReporter.h; sourceTree = "<group>"; };
+		E180F210151E792E009E981C /* RBReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBReporter.m; sourceTree = "<group>"; };
+		E180F211151E792E009E981C /* RBStandardAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBStandardAttachment.h; sourceTree = "<group>"; };
+		E180F212151E792E009E981C /* RBStandardAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBStandardAttachment.m; sourceTree = "<group>"; };
+		E180F213151E792E009E981C /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		E180F21F151E7950009E981C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E180F238151E7CB5009E981C /* Decision+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Decision+Extras.h"; path = "Model/Decision+Extras.h"; sourceTree = "<group>"; };
+		E180F239151E7CB5009E981C /* Decision+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Decision+Extras.m"; path = "Model/Decision+Extras.m"; sourceTree = "<group>"; };
+		E180F23B151E7F40009E981C /* IDDecisionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDDecisionCell.h; path = Views/IDDecisionCell.h; sourceTree = "<group>"; };
+		E180F23C151E7F41009E981C /* IDDecisionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDDecisionCell.m; path = Views/IDDecisionCell.m; sourceTree = "<group>"; };
+		E180F23E151E80C9009E981C /* IDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDObject.h; path = Model/IDObject.h; sourceTree = "<group>"; };
+		E180F23F151E80C9009E981C /* IDObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDObject.m; path = Model/IDObject.m; sourceTree = "<group>"; };
+		E180F241151E80CA009E981C /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Decision.h; path = Model/Decision.h; sourceTree = "<group>"; };
+		E180F242151E80CA009E981C /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Decision.m; path = Model/Decision.m; sourceTree = "<group>"; };
+		E180F244151E80CA009E981C /* Discussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discussion.h; path = Model/Discussion.h; sourceTree = "<group>"; };
+		E180F245151E80CA009E981C /* Discussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discussion.m; path = Model/Discussion.m; sourceTree = "<group>"; };
+		E180F247151E80CA009E981C /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = Model/Preferences.h; sourceTree = "<group>"; };
+		E180F248151E80CA009E981C /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferences.m; path = Model/Preferences.m; sourceTree = "<group>"; };
+		E180F24A151E80CB009E981C /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Option.h; path = Model/Option.h; sourceTree = "<group>"; };
+		E180F24B151E80CB009E981C /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Option.m; path = Model/Option.m; sourceTree = "<group>"; };
+		E180F24D151E80CB009E981C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Model/User.h; sourceTree = "<group>"; };
+		E180F24E151E80CB009E981C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Model/User.m; sourceTree = "<group>"; };
+		E180F250151E80CB009E981C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = Model/Message.h; sourceTree = "<group>"; };
+		E180F251151E80CB009E981C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = Model/Message.m; sourceTree = "<group>"; };
+		E180F253151E80CB009E981C /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = Model/Group.h; sourceTree = "<group>"; };
+		E180F254151E80CB009E981C /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = Model/Group.m; sourceTree = "<group>"; };
+		E180F256151E80E8009E981C /* IDObject+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "IDObject+Extras.h"; path = "Model/IDObject+Extras.h"; sourceTree = "<group>"; };
+		E180F257151E80E8009E981C /* IDObject+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "IDObject+Extras.m"; path = "Model/IDObject+Extras.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +268,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E180F220151E7950009E981C /* CoreData.framework in Frameworks */,
 				E12568F0151AB7D700E56B88 /* MessageUI.framework in Frameworks */,
 				E12568EE151AB7C400E56B88 /* AudioToolbox.framework in Frameworks */,
 				E125661B151AB23500E56B88 /* StoreKit.framework in Frameworks */,
@@ -162,10 +303,11 @@
 			isa = PBXGroup;
 			children = (
 				E12565E6151AB12F00E56B88 /* MainStoryboard.storyboard */,
+				E180F1AA151E773A009E981C /* IDBaseVC.h */,
+				E180F1AB151E773A009E981C /* IDBaseVC.m */,
 				E1231BFB151D7E05009D214A /* IDLoginVC.h */,
 				E1231BFC151D7E05009D214A /* IDLoginVC.m */,
-				E1231BFE151D7E25009D214A /* IDDecisionsVC.h */,
-				E1231BFF151D7E25009D214A /* IDDecisionsVC.m */,
+				E180F25D151E838B009E981C /* Decisions */,
 				E1231C01151D7E35009D214A /* IDDecisionDetailVC.h */,
 				E1231C02151D7E35009D214A /* IDDecisionDetailVC.m */,
 				E1231C09151D851E009D214A /* IDDiscussionVC.h */,
@@ -178,6 +320,9 @@
 			isa = PBXGroup;
 			children = (
 				E1231C06151D8232009D214A /* Model.xcdatamodeld */,
+				E180F1AD151E77AF009E981C /* RBCoreDataAdditions */,
+				E180F221151E7A5E009E981C /* Managed Objects */,
+				E180F222151E7A6D009E981C /* Managed Object Categories */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -204,6 +349,7 @@
 		E12565D3151AB12E00E56B88 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E180F21F151E7950009E981C /* CoreData.framework */,
 				E1256AE3151AB9A000E56B88 /* libUAirship-1.1.4.a */,
 				E12568EF151AB7D700E56B88 /* MessageUI.framework */,
 				E12568ED151AB7C400E56B88 /* AudioToolbox.framework */,
@@ -228,6 +374,7 @@
 			children = (
 				E12565E3151AB12E00E56B88 /* IDAppDelegate.h */,
 				E12565E4151AB12F00E56B88 /* IDAppDelegate.m */,
+				E180F1FB151E78E0009E981C /* Misc Dependencies */,
 				E180F185151E5ECE009E981C /* Networking */,
 				E1231C05151D8212009D214A /* Model */,
 				E1231C04151D7F14009D214A /* View */,
@@ -305,6 +452,161 @@
 			name = AFNetworking;
 			path = AFNetworking/AFNetworking;
 			sourceTree = SOURCE_ROOT;
+		};
+		E180F1AD151E77AF009E981C /* RBCoreDataAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				E180F1AE151E77AF009E981C /* LICENSE */,
+				E180F1AF151E77AF009E981C /* RBCoreDataManager.h */,
+				E180F1B0151E77AF009E981C /* RBCoreDataManager.m */,
+				E180F1B1151E77AF009E981C /* RBCoreDataManagerDelegate.h */,
+				E180F1B2151E77AF009E981C /* RBFetchedResultsTableVC.h */,
+				E180F1B3151E77AF009E981C /* RBFetchedResultsTableVC.m */,
+				E180F1B4151E77AF009E981C /* RBManagedObjectContext.h */,
+				E180F1B5151E77AF009E981C /* RBManagedObjectContext.m */,
+				E180F1B6151E77AF009E981C /* README.markdown */,
+			);
+			path = RBCoreDataAdditions;
+			sourceTree = SOURCE_ROOT;
+		};
+		E180F1BC151E7892009E981C /* RBSingleton */ = {
+			isa = PBXGroup;
+			children = (
+				E180F1BD151E7892009E981C /* RBSimpleSingleton.h */,
+				E180F1BE151E7892009E981C /* RBSingleton.h */,
+				E180F1BF151E7892009E981C /* RBSingleton.m */,
+			);
+			path = RBSingleton;
+			sourceTree = SOURCE_ROOT;
+		};
+		E180F1C1151E78D4009E981C /* RBCategories */ = {
+			isa = PBXGroup;
+			children = (
+				E180F1C2151E78D4009E981C /* .gitignore */,
+				E180F1C3151E78D4009E981C /* GCD+RBExtras.c */,
+				E180F1C4151E78D4009E981C /* GCD+RBExtras.h */,
+				E180F1C5151E78D4009E981C /* LICENSE */,
+				E180F1C6151E78D4009E981C /* NSArray+RBExtras.h */,
+				E180F1C7151E78D4009E981C /* NSArray+RBExtras.m */,
+				E180F1C8151E78D4009E981C /* NSDate+RBExtras.h */,
+				E180F1C9151E78D4009E981C /* NSDate+RBExtras.m */,
+				E180F1CA151E78D4009E981C /* NSError+RBExtras.h */,
+				E180F1CB151E78D4009E981C /* NSError+RBExtras.m */,
+				E180F1CC151E78D4009E981C /* NSManagedObject+RBExtras.h */,
+				E180F1CD151E78D4009E981C /* NSManagedObject+RBExtras.m */,
+				E180F1CE151E78D4009E981C /* NSMutableSet+RBExtras.h */,
+				E180F1CF151E78D4009E981C /* NSMutableSet+RBExtras.m */,
+				E180F1D0151E78D4009E981C /* NSObject+RBExtras.h */,
+				E180F1D1151E78D4009E981C /* NSObject+RBExtras.m */,
+				E180F1D2151E78D4009E981C /* NSSet+RBExtras.h */,
+				E180F1D3151E78D4009E981C /* NSSet+RBExtras.m */,
+				E180F1D4151E78D4009E981C /* NSString+RBExtras.h */,
+				E180F1D5151E78D4009E981C /* NSString+RBExtras.m */,
+				E180F1D6151E78D4009E981C /* NSURL+RBExtras.h */,
+				E180F1D7151E78D4009E981C /* NSURL+RBExtras.m */,
+				E180F1D8151E78D4009E981C /* README.markdown */,
+				E180F1D9151E78D4009E981C /* UIApplication+RBExtras.h */,
+				E180F1DA151E78D4009E981C /* UIApplication+RBExtras.m */,
+				E180F1DB151E78D4009E981C /* UIColor+RBExtras.h */,
+				E180F1DC151E78D4009E981C /* UIColor+RBExtras.m */,
+				E180F1DD151E78D4009E981C /* UITableView+RBExtras.h */,
+				E180F1DE151E78D4009E981C /* UITableView+RBExtras.m */,
+				E180F1DF151E78D4009E981C /* UITextField+RBExtras.h */,
+				E180F1E0151E78D4009E981C /* UITextField+RBExtras.m */,
+				E180F1E1151E78D4009E981C /* UIView+RBExtras.h */,
+				E180F1E2151E78D4009E981C /* UIView+RBExtras.m */,
+				E180F1E3151E78D4009E981C /* UIViewController+RBExtras.h */,
+				E180F1E4151E78D4009E981C /* UIViewController+RBExtras.m */,
+				E180F1E5151E78D4009E981C /* UIWindow+RBExtras.h */,
+				E180F1E6151E78D4009E981C /* UIWindow+RBExtras.m */,
+			);
+			path = RBCategories;
+			sourceTree = SOURCE_ROOT;
+		};
+		E180F1FB151E78E0009E981C /* Misc Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				E180F1FC151E792E009E981C /* RBReporter */,
+				E180F1BC151E7892009E981C /* RBSingleton */,
+				E180F1C1151E78D4009E981C /* RBCategories */,
+			);
+			name = "Misc Dependencies";
+			sourceTree = "<group>";
+		};
+		E180F1FC151E792E009E981C /* RBReporter */ = {
+			isa = PBXGroup;
+			children = (
+				E180F1FD151E792E009E981C /* LICENSE */,
+				E180F1FE151E792E009E981C /* RBAttachment.h */,
+				E180F1FF151E792E009E981C /* RBBaseEmailBuilder.h */,
+				E180F200151E792E009E981C /* RBBaseEmailBuilder.m */,
+				E180F201151E792E009E981C /* RBBaseLogFile.h */,
+				E180F202151E792E009E981C /* RBBaseLogFile.m */,
+				E180F203151E792E009E981C /* RBBugReportEmailBuilder.h */,
+				E180F204151E792E009E981C /* RBBugReportEmailBuilder.m */,
+				E180F205151E792E009E981C /* RBEmailBuilder.h */,
+				E180F206151E792E009E981C /* RBExtendedLogFile.h */,
+				E180F207151E792E009E981C /* RBExtendedLogFile.m */,
+				E180F208151E792E009E981C /* RBLogFile.h */,
+				E180F209151E792E009E981C /* RBLogFileFactory.h */,
+				E180F20A151E792E009E981C /* RBLogFileFactory.m */,
+				E180F20B151E792E009E981C /* RBLogger.h */,
+				E180F20C151E792E009E981C /* RBLogger.m */,
+				E180F20D151E792E009E981C /* RBReportEmailerVC.h */,
+				E180F20E151E792E009E981C /* RBReportEmailerVC.m */,
+				E180F20F151E792E009E981C /* RBReporter.h */,
+				E180F210151E792E009E981C /* RBReporter.m */,
+				E180F211151E792E009E981C /* RBStandardAttachment.h */,
+				E180F212151E792E009E981C /* RBStandardAttachment.m */,
+				E180F213151E792E009E981C /* README.markdown */,
+			);
+			path = RBReporter;
+			sourceTree = SOURCE_ROOT;
+		};
+		E180F221151E7A5E009E981C /* Managed Objects */ = {
+			isa = PBXGroup;
+			children = (
+				E180F241151E80CA009E981C /* Decision.h */,
+				E180F242151E80CA009E981C /* Decision.m */,
+				E180F244151E80CA009E981C /* Discussion.h */,
+				E180F245151E80CA009E981C /* Discussion.m */,
+				E180F247151E80CA009E981C /* Preferences.h */,
+				E180F248151E80CA009E981C /* Preferences.m */,
+				E180F24A151E80CB009E981C /* Option.h */,
+				E180F24B151E80CB009E981C /* Option.m */,
+				E180F24D151E80CB009E981C /* User.h */,
+				E180F24E151E80CB009E981C /* User.m */,
+				E180F250151E80CB009E981C /* Message.h */,
+				E180F251151E80CB009E981C /* Message.m */,
+				E180F253151E80CB009E981C /* Group.h */,
+				E180F254151E80CB009E981C /* Group.m */,
+				E180F23E151E80C9009E981C /* IDObject.h */,
+				E180F23F151E80C9009E981C /* IDObject.m */,
+			);
+			name = "Managed Objects";
+			sourceTree = "<group>";
+		};
+		E180F222151E7A6D009E981C /* Managed Object Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E180F256151E80E8009E981C /* IDObject+Extras.h */,
+				E180F257151E80E8009E981C /* IDObject+Extras.m */,
+				E180F238151E7CB5009E981C /* Decision+Extras.h */,
+				E180F239151E7CB5009E981C /* Decision+Extras.m */,
+			);
+			name = "Managed Object Categories";
+			sourceTree = "<group>";
+		};
+		E180F25D151E838B009E981C /* Decisions */ = {
+			isa = PBXGroup;
+			children = (
+				E1231BFE151D7E25009D214A /* IDDecisionsVC.h */,
+				E1231BFF151D7E25009D214A /* IDDecisionsVC.m */,
+				E180F23B151E7F40009E981C /* IDDecisionCell.h */,
+				E180F23C151E7F41009E981C /* IDDecisionCell.m */,
+			);
+			name = Decisions;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -432,6 +734,48 @@
 				E180F1A5151E5EE4009E981C /* AFXMLRequestOperation.m in Sources */,
 				E180F1A6151E5EE4009E981C /* UIImageView+AFNetworking.m in Sources */,
 				E180F1A9151E69FE009E981C /* IDHTTPRequest.m in Sources */,
+				E180F1AC151E773A009E981C /* IDBaseVC.m in Sources */,
+				E180F1B8151E77AF009E981C /* RBCoreDataManager.m in Sources */,
+				E180F1B9151E77AF009E981C /* RBFetchedResultsTableVC.m in Sources */,
+				E180F1BA151E77AF009E981C /* RBManagedObjectContext.m in Sources */,
+				E180F1C0151E7892009E981C /* RBSingleton.m in Sources */,
+				E180F1E8151E78D4009E981C /* GCD+RBExtras.c in Sources */,
+				E180F1EA151E78D4009E981C /* NSArray+RBExtras.m in Sources */,
+				E180F1EB151E78D4009E981C /* NSDate+RBExtras.m in Sources */,
+				E180F1EC151E78D4009E981C /* NSError+RBExtras.m in Sources */,
+				E180F1ED151E78D4009E981C /* NSManagedObject+RBExtras.m in Sources */,
+				E180F1EE151E78D4009E981C /* NSMutableSet+RBExtras.m in Sources */,
+				E180F1EF151E78D4009E981C /* NSObject+RBExtras.m in Sources */,
+				E180F1F0151E78D4009E981C /* NSSet+RBExtras.m in Sources */,
+				E180F1F1151E78D4009E981C /* NSString+RBExtras.m in Sources */,
+				E180F1F2151E78D4009E981C /* NSURL+RBExtras.m in Sources */,
+				E180F1F4151E78D4009E981C /* UIApplication+RBExtras.m in Sources */,
+				E180F1F5151E78D4009E981C /* UIColor+RBExtras.m in Sources */,
+				E180F1F6151E78D4009E981C /* UITableView+RBExtras.m in Sources */,
+				E180F1F7151E78D4009E981C /* UITextField+RBExtras.m in Sources */,
+				E180F1F8151E78D4009E981C /* UIView+RBExtras.m in Sources */,
+				E180F1F9151E78D4009E981C /* UIViewController+RBExtras.m in Sources */,
+				E180F1FA151E78D4009E981C /* UIWindow+RBExtras.m in Sources */,
+				E180F215151E792E009E981C /* RBBaseEmailBuilder.m in Sources */,
+				E180F216151E792E009E981C /* RBBaseLogFile.m in Sources */,
+				E180F217151E792E009E981C /* RBBugReportEmailBuilder.m in Sources */,
+				E180F218151E792E009E981C /* RBExtendedLogFile.m in Sources */,
+				E180F219151E792E009E981C /* RBLogFileFactory.m in Sources */,
+				E180F21A151E792E009E981C /* RBLogger.m in Sources */,
+				E180F21B151E792E009E981C /* RBReportEmailerVC.m in Sources */,
+				E180F21C151E792E009E981C /* RBReporter.m in Sources */,
+				E180F21D151E792E009E981C /* RBStandardAttachment.m in Sources */,
+				E180F23A151E7CB5009E981C /* Decision+Extras.m in Sources */,
+				E180F23D151E7F41009E981C /* IDDecisionCell.m in Sources */,
+				E180F240151E80C9009E981C /* IDObject.m in Sources */,
+				E180F243151E80CA009E981C /* Decision.m in Sources */,
+				E180F246151E80CA009E981C /* Discussion.m in Sources */,
+				E180F249151E80CA009E981C /* Preferences.m in Sources */,
+				E180F24C151E80CB009E981C /* Option.m in Sources */,
+				E180F24F151E80CB009E981C /* User.m in Sources */,
+				E180F252151E80CB009E981C /* Message.m in Sources */,
+				E180F255151E80CB009E981C /* Group.m in Sources */,
+				E180F258151E80E8009E981C /* IDObject+Extras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IDLoginVC : UIViewController
+#import "IDBaseVC.h"
+
+@interface IDLoginVC : IDBaseVC
 
 @end

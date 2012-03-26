@@ -1,3 +1,15 @@
 [submodule "Decide iOS/AFNetworking"]
 	path = Decide iOS/AFNetworking
 	url = git://github.com/AFNetworking/AFNetworking.git
+[submodule "Decide iOS/RBCoreDataAdditions"]
+	path = Decide iOS/RBCoreDataAdditions
+	url = git@github.com:rob-brown/RBCoreDataAdditions.git
+[submodule "gist-1116294"]
+	path = gist-1116294
+	url = git://gist.github.com/1116294.git
+[submodule "Decide iOS/RBCategories"]
+	path = Decide iOS/RBCategories
+	url = git@github.com:rob-brown/RBCategories.git
+[submodule "Decide iOS/RBReporter"]
+	path = Decide iOS/RBReporter
+	url = git@github.com:rob-brown/RBBugReporter.git

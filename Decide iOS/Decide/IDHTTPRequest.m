@@ -15,7 +15,7 @@ NSString * const IDHTTPRequestErrorKey = @"error";
 
 NSString * const IDHTTPRequestErrorDomain = @"IDHTTPRequestErrorDomain";
 const NSInteger IDHTTPRequestLoginErrorCode = 123; 
-const NSInteger IDHTTPRequestLogoutErrorCode = 123; 
+const NSInteger IDHTTPRequestLogoutErrorCode = 124; 
 
 @implementation IDHTTPRequest
 
@@ -31,20 +31,28 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 123;
     return _baseURL;
 }
 
+- (NSMutableURLRequest *)mutableURLRequestWithPath:(NSString *)path method:(NSString *)method jsonBody:(NSString *)json {
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:path
+                                                                               relativeToURL:[[self class] baseURL]]];
+    [request setHTTPMethod:method];
+    [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
+    
+    return request;
+}
+
 - (void)loginWithUsername:(NSString *)username password:(NSString *)password block:(IDHTTPRequestBlock)block {
     
     NSParameterAssert(username && password && block);
     
-    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/users/sign_in.json"
-                                                                               relativeToURL:[[self class] baseURL]]];
-    [request setHTTPMethod:@"POST"];
-    NSString * bodyStr = [NSString stringWithFormat:
-                          @"{\"user\":{\"email\":\"%@\",\"password\":\"%@\",\"remember_me\":\"0\"}}", 
-                          username, 
-                          password];
-    [request setHTTPBody:[bodyStr dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
+    NSString * json = [NSString stringWithFormat:
+                       @"{\"user\":{\"email\":\"%@\",\"password\":\"%@\",\"remember_me\":\"0\"}}", 
+                       username, 
+                       password];
     
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/users/sign_in.json" 
+                                                             method:@"POST" 
+                                                           jsonBody:json];
     AFJSONRequestOperation * op = nil;
     op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                          success:
@@ -73,19 +81,16 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 123;
 
 - (void)logoutBlock:(IDHTTPRequestBlock)block {
     
-    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/users/sign_out.json"
-                                                                               relativeToURL:[[self class] baseURL]]];
-    [request setHTTPMethod:@"DELETE"];
-    NSString * bodyStr = [NSString stringWithFormat:@"{}"];
-    [request setHTTPBody:[bodyStr dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/users/sign_out.json" 
+                                                             method:@"DELETE" 
+                                                           jsonBody:@"{}"];
     
     AFJSONRequestOperation * op = nil;
     op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                          success:
           ^(NSURLRequest * request, NSHTTPURLResponse * response, id JSON) {
               
-              NSString * errStr = [JSON valueForKey:@"error"];
+              NSString * errStr = [JSON valueForKey:IDHTTPRequestErrorKey];
               
               if (errStr) {
                   NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:

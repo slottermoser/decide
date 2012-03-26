@@ -15,7 +15,5 @@
 /tmp
 
 .DS_Store
-Decide iOS/Decide/AirshipConfig.plist
-xcuserdata
-Breakpoints.xcbkptlist
-UserInterfaceState.xcuserstate
+Decide iOS/Decide/AirshipConfig.plist\
+Decide iOS/Decide.xcodeproj/project.xcworkspace/xcuserdata/*

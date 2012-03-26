@@ -1,44 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11D50b" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Decision" syncable="YES">
+    <entity name="Decision" representedClassName="Decision" parentEntity="IDObject" syncable="YES">
+        <attribute name="deadline" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="discussion" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Discussion" inverseName="decision" inverseEntity="Discussion" syncable="YES"/>
         <relationship name="options" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Option" inverseName="decision" inverseEntity="Option" syncable="YES"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="User" inverseName="decisions" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Discussion" syncable="YES">
+    <entity name="Discussion" representedClassName="Discussion" parentEntity="IDObject" syncable="YES">
         <relationship name="decision" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Decision" inverseName="discussion" inverseEntity="Decision" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="discussion" inverseEntity="Message" syncable="YES"/>
     </entity>
-    <entity name="Group" syncable="YES">
+    <entity name="Group" representedClassName="Group" parentEntity="IDObject" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="groups" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Message" syncable="YES">
+    <entity name="IDObject" representedClassName="IDObject" syncable="YES">
+        <attribute name="creationDate" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="Message" representedClassName="Message" parentEntity="IDObject" syncable="YES">
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="discussion" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Discussion" inverseName="messages" inverseEntity="Discussion" syncable="YES"/>
     </entity>
-    <entity name="Option" syncable="YES">
+    <entity name="Option" representedClassName="Option" parentEntity="IDObject" syncable="YES">
         <attribute name="text" attributeType="String" syncable="YES"/>
         <attribute name="voted" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="decision" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Decision" inverseName="options" inverseEntity="Decision" syncable="YES"/>
     </entity>
-    <entity name="Preferences" syncable="YES">
+    <entity name="Preferences" representedClassName="Preferences" parentEntity="IDObject" syncable="YES">
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="preferences" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="User" syncable="YES">
+    <entity name="User" representedClassName="User" parentEntity="IDObject" syncable="YES">
         <attribute name="username" attributeType="String" syncable="YES"/>
         <relationship name="decisions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Decision" inverseName="user" inverseEntity="Decision" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="users" inverseEntity="Group" syncable="YES"/>
         <relationship name="preferences" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Preferences" inverseName="user" inverseEntity="Preferences" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Decision" positionX="-252" positionY="-6" width="128" height="105"/>
-        <element name="Option" positionX="-54" positionY="-9" width="128" height="90"/>
-        <element name="User" positionX="-468" positionY="-0" width="128" height="105"/>
-        <element name="Discussion" positionX="-200" positionY="147" width="128" height="75"/>
-        <element name="Message" positionX="-243" positionY="306" width="128" height="75"/>
-        <element name="Preferences" positionX="-459" positionY="144" width="128" height="60"/>
+        <element name="Decision" positionX="-245" positionY="30" width="128" height="120"/>
+        <element name="Discussion" positionX="-63" positionY="150" width="128" height="75"/>
         <element name="Group" positionX="-738" positionY="12" width="128" height="75"/>
+        <element name="Message" positionX="-414" positionY="297" width="128" height="75"/>
+        <element name="Option" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Preferences" positionX="-459" positionY="144" width="128" height="60"/>
+        <element name="User" positionX="-504" positionY="-0" width="128" height="105"/>
+        <element name="IDObject" positionX="-254" positionY="-180" width="128" height="60"/>
     </elements>
 </model>

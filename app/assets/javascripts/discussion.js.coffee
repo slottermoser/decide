@@ -9,6 +9,7 @@ class Entry
     @response = entry.entry
     @created = entry.created_at
     @id = entry.id
+    @name = entry.name
     @discussion = discussion
     Entry.reg[@id] = this
     
@@ -26,20 +27,24 @@ class Entry
   build_entry_container:() ->
     that = this
     @reply_button = $("<button>").attr({
-      'class':'btn',
+      'class':'btn reply-button',
     }).append("Reply").bind('click', (event) ->
       that.reply_dialog(event)
     )
     @entry_container = $("<div class='entry'>").append(
-      $('<span class="response">').append(@response)
+      $('<span class="content">').append(@response)
     ).append(
-      $('<span class="created">').append(@created)
+      $('<div class="info">').append(
+        $('<span class="user">').append("-" + @name)
+      ).append(
+        $('<span class="created">').append(@created)
+      )
     ).append(@reply_button)
     return @entry_container
     
   reply_dialog:(event) ->
     that = this
-    reply_input = $('<input>').attr({'type':'text'})
+    reply_input = $('<textarea>')
     content = $('<div>').attr({'class':'new_reply'}).append(
         $('<label>').attr({'for':'reply_value'}).append('Reply:')
       ).append(reply_input)
@@ -59,7 +64,7 @@ class Entry
       },
       (data) ->
         if data.status == 'success'
-          that.children.push(new Entry data.entry_info, that.discussion)
+          that.children.push(new Entry data.entry_info, that.discussion,)
           socket.emit('new reply', {entry_info: data.entry_info})
           that.discussion.refresh()
         else

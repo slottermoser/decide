@@ -11,11 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <div class="well">
+    <%= f.label "The question", :class => 'control-label' %>
+    <div class="controls"><%= f.text_field :title, :class => "input-xlarge" %></div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit(:class => "btn") %>
   </div>
 <% end %>

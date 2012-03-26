@@ -5,3 +5,36 @@
 #discussion_reply {
   display:none;
 }
+
+#page_discussion {
+  margin-bottom: 20px;
+  .children {
+    padding-left:20px;
+    border-left: 5px solid #CCCCCC;
+  }
+  .entry {
+    border-bottom: 1px solid #DDDDDD;
+    padding: 5px 65px 5px 5px;
+    overflow:hidden;
+    position:relative;
+    .content {
+      float:left;
+      font-size: 12pt;
+    }
+    .info {
+      float:left;
+      clear:both;
+      font-size: 9pt;
+      color: #999;
+      font-style: italic;
+      span {
+        margin-right: 10px;
+      }
+    }
+    .reply-button {
+      position:absolute;
+      right:5px;
+      top: 5px;
+    }
+  }
+}

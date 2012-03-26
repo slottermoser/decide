@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @decision.title %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @decision.user_id %>
-</p>
+<h2>Info</h2>
+<div class="row question-info">
+	<div class="span12 item">
+	  <span class="description">Question:</span>
+	  <span class="value"><%= @decision.title %></span>
+	</div>
+	
+	<div class="span12 item">
+	  <span class="description">Asker:</span>
+	  <span class="value"><%= @decision.creator.name %></span>
+	</div>
+</div>
 
 <%= render 'discussion/show'%>
 

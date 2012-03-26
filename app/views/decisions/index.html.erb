@@ -1,25 +1,50 @@
-<h1>Listing decisions</h1>
+<h1>Decisions</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h2>Own Decisions</h2>
+<table class="table table-bordered">
+	<thead>
+	  	<tr>
+	  	  <th>Title</th>
+	  	  <th>Actions</th>
+	  	</tr>
+  	</thead>
 
-<% @decisions.each do |decision| %>
-  <tr>
-    <td><%= decision.title %></td>
-    <td><%= decision.user_id %></td>
-    <td><%= link_to 'Show', decision %></td>
-    <td><%= link_to 'Edit', edit_decision_path(decision) %></td>
-    <td><%= link_to 'Destroy', decision, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+	<tbody>
+	<% @decisions.each do |decision| %>
+	  <tr>
+	    <td><%= decision.title %></td>
+	    <td>
+	    	<%= link_to 'Show', decision, {:class => "btn"} %> 
+	    	<%= link_to 'Edit', edit_decision_path(decision), {:class => "btn btn-primary"} %>
+	    	<%= link_to 'Delete', decision, {:class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete}  %>
+	    </td>
+	  </tr>
+	<% end %>
+	</tbody>
+</table>
+<h2>Participating Decisions</h2>
+<table class="table table-bordered">
+	<thead>
+	  	<tr>
+	  	  <th>Title</th>
+	  	  <th>Actions</th>
+	  	</tr>
+  	</thead>
+
+	<tbody>
+	<% @participating.each do |decision| %>
+	  <tr>
+	    <td><%= decision.title %></td>
+	    <td>
+	    	<%= link_to 'Show', decision, {:class => "btn"} %> | 
+	    	<%= link_to 'Edit', edit_decision_path(decision), {:class => "btn btn-primary"} %> | 
+	    	<%= link_to 'Destroy', decision,  {:class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete} %>
+	    </td>
+	  </tr>
+	<% end %>
+	</tbody>
 </table>
 
 <br />
 
-<%= link_to 'New Decision', new_decision_path %>
+<%= link_to 'New Decision', new_decision_path, {:class => "btn btn-primary"} %>

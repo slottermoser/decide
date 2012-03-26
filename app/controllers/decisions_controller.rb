@@ -1,8 +1,22 @@
 class DecisionsController < ApplicationController
+  before_filter :require_login
+  
+  private
+  
+  def require_login
+    if current_user.nil?
+      flash[:error] = "You must be signed in"
+      redirect_to new_user_session_path
+    end
+  end
+  
+  public
+  
   # GET /decisions
   # GET /decisions.json
   def index
-    @decisions = Decision.all
+    @decisions = current_user.created_decisions
+    @participating = current_user.participating_decisions
 
     respond_to do |format|
       format.html # index.html.erb

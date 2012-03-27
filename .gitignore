@@ -19,3 +19,6 @@ Decide iOS/Decide/AirshipConfig.plist
 xcuserdata
 Breakpoints.xcbkptlist
 UserInterfaceState.xcuserstate
+
+# Ignore node_modules
+/event_server/node_modules

@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong, readonly) Decision * decision;
 
+- (void)setupWithDecision:(Decision *)decision;
+
 @end

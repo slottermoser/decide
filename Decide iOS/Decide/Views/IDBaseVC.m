@@ -52,7 +52,7 @@
     
     if (!_moc) {
         @synchronized(self) {
-            if (!_moc) _moc = [[RBCoreDataManager sharedManager] createMOC];
+            if (!_moc) _moc = [[RBCoreDataManager defaultManager] createMOC];
         }
     }
     

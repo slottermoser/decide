@@ -15,5 +15,6 @@
 /tmp
 
 .DS_Store
-Decide iOS/Decide/AirshipConfig.plist\
 Decide iOS/Decide.xcodeproj/project.xcworkspace/xcuserdata/*
+Decide iOS/Decide.xcodeproj/xcuserdata/*
+Decide iOS/Decide/AirshipConfig.plist

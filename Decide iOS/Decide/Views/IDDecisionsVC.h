@@ -10,6 +10,6 @@
 
 #import "IDBaseVC.h"
 
-@interface IDDecisionsVC : IDBaseVC
+@interface IDDecisionsVC : IDBaseVC <UITableViewDataSource>
 
 @end

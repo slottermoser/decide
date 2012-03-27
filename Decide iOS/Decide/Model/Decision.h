@@ -2,7 +2,7 @@
 //  Decision.h
 //  Decide
 //
-//  Created by Robert Brown on 3/24/12.
+//  Created by Robert Brown on 3/26/12.
 //  Copyright (c) 2012 Robert Brown. All rights reserved.
 //
 
@@ -14,18 +14,23 @@
 
 @interface Decision : IDObject
 
-@property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSDate * deadline;
+@property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) Discussion *discussion;
-@property (nonatomic, retain) Option *options;
-@property (nonatomic, retain) NSSet *user;
+@property (nonatomic, retain) NSOrderedSet *options;
+@property (nonatomic, retain) User *user;
 @end
 
 @interface Decision (CoreDataGeneratedAccessors)
 
-- (void)addUserObject:(User *)value;
-- (void)removeUserObject:(User *)value;
-- (void)addUser:(NSSet *)values;
-- (void)removeUser:(NSSet *)values;
-
+- (void)insertObject:(Option *)value inOptionsAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromOptionsAtIndex:(NSUInteger)idx;
+- (void)insertOptions:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeOptionsAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInOptionsAtIndex:(NSUInteger)idx withObject:(Option *)value;
+- (void)replaceOptionsAtIndexes:(NSIndexSet *)indexes withOptions:(NSArray *)values;
+- (void)addOptionsObject:(Option *)value;
+- (void)removeOptionsObject:(Option *)value;
+- (void)addOptions:(NSOrderedSet *)values;
+- (void)removeOptions:(NSOrderedSet *)values;
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "Decision+Extras.h"
-#import "NSManagedObject+RBExtras.h"
 
 @implementation Decision (Extras)
 

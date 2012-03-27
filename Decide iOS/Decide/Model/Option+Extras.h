@@ -1,5 +1,5 @@
 //
-//  Option.m
+//  Option+Extras.h
 //  Decide
 //
 //  Created by Robert Brown on 3/26/12.
@@ -7,14 +7,7 @@
 //
 
 #import "Option.h"
-#import "Decision.h"
 
-
-@implementation Option
-
-@dynamic text;
-@dynamic voted;
-@dynamic voteCount;
-@dynamic decision;
+@interface Option (Extras)
 
 @end

@@ -10,6 +10,6 @@
 
 #import "IDBaseVC.h"
 
-@interface IDLoginVC : IDBaseVC
+@interface IDLoginVC : IDBaseVC <UITextFieldDelegate>
 
 @end

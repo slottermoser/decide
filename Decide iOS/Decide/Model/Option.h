@@ -2,7 +2,7 @@
 //  Option.h
 //  Decide
 //
-//  Created by Robert Brown on 3/24/12.
+//  Created by Robert Brown on 3/26/12.
 //  Copyright (c) 2012 Robert Brown. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSNumber * voted;
+@property (nonatomic, retain) NSNumber * voteCount;
 @property (nonatomic, retain) Decision *decision;
 
 @end

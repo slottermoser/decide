@@ -10,7 +10,7 @@
 		E1231BFD151D7E05009D214A /* IDLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1231BFC151D7E05009D214A /* IDLoginVC.m */; };
 		E1231C00151D7E25009D214A /* IDDecisionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1231BFF151D7E25009D214A /* IDDecisionsVC.m */; };
 		E1231C03151D7E35009D214A /* IDDecisionDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1231C02151D7E35009D214A /* IDDecisionDetailVC.m */; };
-		E1231C08151D8232009D214A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1231C06151D8232009D214A /* Model.xcdatamodeld */; };
+		E1231C08151D8232009D214A /* decide.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1231C06151D8232009D214A /* decide.xcdatamodeld */; };
 		E1231C0B151D851E009D214A /* IDDiscussionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E1231C0A151D851E009D214A /* IDDiscussionVC.m */; };
 		E12565D5151AB12E00E56B88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12565D4151AB12E00E56B88 /* UIKit.framework */; };
 		E12565D7151AB12E00E56B88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12565D6151AB12E00E56B88 /* Foundation.framework */; };
@@ -82,14 +82,18 @@
 		E180F23A151E7CB5009E981C /* Decision+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F239151E7CB5009E981C /* Decision+Extras.m */; };
 		E180F23D151E7F41009E981C /* IDDecisionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F23C151E7F41009E981C /* IDDecisionCell.m */; };
 		E180F240151E80C9009E981C /* IDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F23F151E80C9009E981C /* IDObject.m */; };
-		E180F243151E80CA009E981C /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F242151E80CA009E981C /* Decision.m */; };
 		E180F246151E80CA009E981C /* Discussion.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F245151E80CA009E981C /* Discussion.m */; };
 		E180F249151E80CA009E981C /* Preferences.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F248151E80CA009E981C /* Preferences.m */; };
-		E180F24C151E80CB009E981C /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F24B151E80CB009E981C /* Option.m */; };
-		E180F24F151E80CB009E981C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F24E151E80CB009E981C /* User.m */; };
 		E180F252151E80CB009E981C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F251151E80CB009E981C /* Message.m */; };
 		E180F255151E80CB009E981C /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F254151E80CB009E981C /* Group.m */; };
 		E180F258151E80E8009E981C /* IDObject+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E180F257151E80E8009E981C /* IDObject+Extras.m */; };
+		E1EF686015211E3000AF5FDB /* IDLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EF685F15211E3000AF5FDB /* IDLoginManager.m */; };
+		E1EF6864152120E600AF5FDB /* User+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EF6863152120E600AF5FDB /* User+Extras.m */; };
+		E1EF6870152122D700AF5FDB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EF686F152122D700AF5FDB /* User.m */; };
+		E1EF687A152127A800AF5FDB /* IDDecisionDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EF6879152127A800AF5FDB /* IDDecisionDetailCell.m */; };
+		E1EF687D15212A3F00AF5FDB /* Option+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EF687C15212A3F00AF5FDB /* Option+Extras.m */; };
+		E1EF688315212F1100AF5FDB /* Decision.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EF688215212F1000AF5FDB /* Decision.m */; };
+		E1EF688615212F1100AF5FDB /* Option.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EF688515212F1100AF5FDB /* Option.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +113,7 @@
 		E1231BFF151D7E25009D214A /* IDDecisionsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDDecisionsVC.m; path = Views/IDDecisionsVC.m; sourceTree = "<group>"; };
 		E1231C01151D7E35009D214A /* IDDecisionDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDDecisionDetailVC.h; sourceTree = "<group>"; };
 		E1231C02151D7E35009D214A /* IDDecisionDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDDecisionDetailVC.m; sourceTree = "<group>"; };
-		E1231C07151D8232009D214A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E1231C07151D8232009D214A /* decide.xcdatamodel */ = {isa = PBXFileReference; path = decide.xcdatamodel; sourceTree = "<group>"; };
 		E1231C09151D851E009D214A /* IDDiscussionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDDiscussionVC.h; sourceTree = "<group>"; };
 		E1231C0A151D851E009D214A /* IDDiscussionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDDiscussionVC.m; sourceTree = "<group>"; };
 		E12565D0151AB12E00E56B88 /* decide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = decide.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,22 +249,30 @@
 		E180F23C151E7F41009E981C /* IDDecisionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDDecisionCell.m; path = Views/IDDecisionCell.m; sourceTree = "<group>"; };
 		E180F23E151E80C9009E981C /* IDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDObject.h; path = Model/IDObject.h; sourceTree = "<group>"; };
 		E180F23F151E80C9009E981C /* IDObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDObject.m; path = Model/IDObject.m; sourceTree = "<group>"; };
-		E180F241151E80CA009E981C /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Decision.h; path = Model/Decision.h; sourceTree = "<group>"; };
-		E180F242151E80CA009E981C /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Decision.m; path = Model/Decision.m; sourceTree = "<group>"; };
 		E180F244151E80CA009E981C /* Discussion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Discussion.h; path = Model/Discussion.h; sourceTree = "<group>"; };
 		E180F245151E80CA009E981C /* Discussion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Discussion.m; path = Model/Discussion.m; sourceTree = "<group>"; };
 		E180F247151E80CA009E981C /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Preferences.h; path = Model/Preferences.h; sourceTree = "<group>"; };
 		E180F248151E80CA009E981C /* Preferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Preferences.m; path = Model/Preferences.m; sourceTree = "<group>"; };
-		E180F24A151E80CB009E981C /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Option.h; path = Model/Option.h; sourceTree = "<group>"; };
-		E180F24B151E80CB009E981C /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Option.m; path = Model/Option.m; sourceTree = "<group>"; };
-		E180F24D151E80CB009E981C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Model/User.h; sourceTree = "<group>"; };
-		E180F24E151E80CB009E981C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Model/User.m; sourceTree = "<group>"; };
 		E180F250151E80CB009E981C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = Model/Message.h; sourceTree = "<group>"; };
 		E180F251151E80CB009E981C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = Model/Message.m; sourceTree = "<group>"; };
 		E180F253151E80CB009E981C /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Group.h; path = Model/Group.h; sourceTree = "<group>"; };
 		E180F254151E80CB009E981C /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Group.m; path = Model/Group.m; sourceTree = "<group>"; };
 		E180F256151E80E8009E981C /* IDObject+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "IDObject+Extras.h"; path = "Model/IDObject+Extras.h"; sourceTree = "<group>"; };
 		E180F257151E80E8009E981C /* IDObject+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "IDObject+Extras.m"; path = "Model/IDObject+Extras.m"; sourceTree = "<group>"; };
+		E1EF685E15211E3000AF5FDB /* IDLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDLoginManager.h; sourceTree = "<group>"; };
+		E1EF685F15211E3000AF5FDB /* IDLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDLoginManager.m; sourceTree = "<group>"; };
+		E1EF6862152120E600AF5FDB /* User+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "User+Extras.h"; path = "Model/User+Extras.h"; sourceTree = "<group>"; };
+		E1EF6863152120E600AF5FDB /* User+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "User+Extras.m"; path = "Model/User+Extras.m"; sourceTree = "<group>"; };
+		E1EF686E152122D700AF5FDB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Model/User.h; sourceTree = "<group>"; };
+		E1EF686F152122D700AF5FDB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Model/User.m; sourceTree = "<group>"; };
+		E1EF6878152127A800AF5FDB /* IDDecisionDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDDecisionDetailCell.h; path = Views/IDDecisionDetailCell.h; sourceTree = "<group>"; };
+		E1EF6879152127A800AF5FDB /* IDDecisionDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDDecisionDetailCell.m; path = Views/IDDecisionDetailCell.m; sourceTree = "<group>"; };
+		E1EF687B15212A3F00AF5FDB /* Option+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Option+Extras.h"; path = "Model/Option+Extras.h"; sourceTree = "<group>"; };
+		E1EF687C15212A3F00AF5FDB /* Option+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Option+Extras.m"; path = "Model/Option+Extras.m"; sourceTree = "<group>"; };
+		E1EF688115212F1000AF5FDB /* Decision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Decision.h; path = Model/Decision.h; sourceTree = "<group>"; };
+		E1EF688215212F1000AF5FDB /* Decision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Decision.m; path = Model/Decision.m; sourceTree = "<group>"; };
+		E1EF688415212F1100AF5FDB /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Option.h; path = Model/Option.h; sourceTree = "<group>"; };
+		E1EF688515212F1100AF5FDB /* Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Option.m; path = Model/Option.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,8 +320,7 @@
 				E1231BFB151D7E05009D214A /* IDLoginVC.h */,
 				E1231BFC151D7E05009D214A /* IDLoginVC.m */,
 				E180F25D151E838B009E981C /* Decisions */,
-				E1231C01151D7E35009D214A /* IDDecisionDetailVC.h */,
-				E1231C02151D7E35009D214A /* IDDecisionDetailVC.m */,
+				E1EF68711521257400AF5FDB /* Decision Detail */,
 				E1231C09151D851E009D214A /* IDDiscussionVC.h */,
 				E1231C0A151D851E009D214A /* IDDiscussionVC.m */,
 			);
@@ -319,7 +330,7 @@
 		E1231C05151D8212009D214A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E1231C06151D8232009D214A /* Model.xcdatamodeld */,
+				E1231C06151D8232009D214A /* decide.xcdatamodeld */,
 				E180F1AD151E77AF009E981C /* RBCoreDataAdditions */,
 				E180F221151E7A5E009E981C /* Managed Objects */,
 				E180F222151E7A6D009E981C /* Managed Object Categories */,
@@ -420,6 +431,8 @@
 				E180F187151E5EE4009E981C /* AFNetworking */,
 				E180F1A7151E69FD009E981C /* IDHTTPRequest.h */,
 				E180F1A8151E69FD009E981C /* IDHTTPRequest.m */,
+				E1EF685E15211E3000AF5FDB /* IDLoginManager.h */,
+				E1EF685F15211E3000AF5FDB /* IDLoginManager.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -566,22 +579,22 @@
 		E180F221151E7A5E009E981C /* Managed Objects */ = {
 			isa = PBXGroup;
 			children = (
-				E180F241151E80CA009E981C /* Decision.h */,
-				E180F242151E80CA009E981C /* Decision.m */,
 				E180F244151E80CA009E981C /* Discussion.h */,
 				E180F245151E80CA009E981C /* Discussion.m */,
 				E180F247151E80CA009E981C /* Preferences.h */,
 				E180F248151E80CA009E981C /* Preferences.m */,
-				E180F24A151E80CB009E981C /* Option.h */,
-				E180F24B151E80CB009E981C /* Option.m */,
-				E180F24D151E80CB009E981C /* User.h */,
-				E180F24E151E80CB009E981C /* User.m */,
 				E180F250151E80CB009E981C /* Message.h */,
 				E180F251151E80CB009E981C /* Message.m */,
 				E180F253151E80CB009E981C /* Group.h */,
 				E180F254151E80CB009E981C /* Group.m */,
 				E180F23E151E80C9009E981C /* IDObject.h */,
 				E180F23F151E80C9009E981C /* IDObject.m */,
+				E1EF686E152122D700AF5FDB /* User.h */,
+				E1EF686F152122D700AF5FDB /* User.m */,
+				E1EF688115212F1000AF5FDB /* Decision.h */,
+				E1EF688215212F1000AF5FDB /* Decision.m */,
+				E1EF688415212F1100AF5FDB /* Option.h */,
+				E1EF688515212F1100AF5FDB /* Option.m */,
 			);
 			name = "Managed Objects";
 			sourceTree = "<group>";
@@ -593,6 +606,10 @@
 				E180F257151E80E8009E981C /* IDObject+Extras.m */,
 				E180F238151E7CB5009E981C /* Decision+Extras.h */,
 				E180F239151E7CB5009E981C /* Decision+Extras.m */,
+				E1EF6862152120E600AF5FDB /* User+Extras.h */,
+				E1EF6863152120E600AF5FDB /* User+Extras.m */,
+				E1EF687B15212A3F00AF5FDB /* Option+Extras.h */,
+				E1EF687C15212A3F00AF5FDB /* Option+Extras.m */,
 			);
 			name = "Managed Object Categories";
 			sourceTree = "<group>";
@@ -606,6 +623,17 @@
 				E180F23C151E7F41009E981C /* IDDecisionCell.m */,
 			);
 			name = Decisions;
+			sourceTree = "<group>";
+		};
+		E1EF68711521257400AF5FDB /* Decision Detail */ = {
+			isa = PBXGroup;
+			children = (
+				E1231C01151D7E35009D214A /* IDDecisionDetailVC.h */,
+				E1231C02151D7E35009D214A /* IDDecisionDetailVC.m */,
+				E1EF6878152127A800AF5FDB /* IDDecisionDetailCell.h */,
+				E1EF6879152127A800AF5FDB /* IDDecisionDetailCell.m */,
+			);
+			name = "Decision Detail";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -721,7 +749,7 @@
 				E1231BFD151D7E05009D214A /* IDLoginVC.m in Sources */,
 				E1231C00151D7E25009D214A /* IDDecisionsVC.m in Sources */,
 				E1231C03151D7E35009D214A /* IDDecisionDetailVC.m in Sources */,
-				E1231C08151D8232009D214A /* Model.xcdatamodeld in Sources */,
+				E1231C08151D8232009D214A /* decide.xcdatamodeld in Sources */,
 				E1231C0B151D851E009D214A /* IDDiscussionVC.m in Sources */,
 				E180F19D151E5EE4009E981C /* AFHTTPClient.m in Sources */,
 				E180F19E151E5EE4009E981C /* AFHTTPRequestOperation.m in Sources */,
@@ -768,14 +796,18 @@
 				E180F23A151E7CB5009E981C /* Decision+Extras.m in Sources */,
 				E180F23D151E7F41009E981C /* IDDecisionCell.m in Sources */,
 				E180F240151E80C9009E981C /* IDObject.m in Sources */,
-				E180F243151E80CA009E981C /* Decision.m in Sources */,
 				E180F246151E80CA009E981C /* Discussion.m in Sources */,
 				E180F249151E80CA009E981C /* Preferences.m in Sources */,
-				E180F24C151E80CB009E981C /* Option.m in Sources */,
-				E180F24F151E80CB009E981C /* User.m in Sources */,
 				E180F252151E80CB009E981C /* Message.m in Sources */,
 				E180F255151E80CB009E981C /* Group.m in Sources */,
 				E180F258151E80E8009E981C /* IDObject+Extras.m in Sources */,
+				E1EF686015211E3000AF5FDB /* IDLoginManager.m in Sources */,
+				E1EF6864152120E600AF5FDB /* User+Extras.m in Sources */,
+				E1EF6870152122D700AF5FDB /* User.m in Sources */,
+				E1EF687A152127A800AF5FDB /* IDDecisionDetailCell.m in Sources */,
+				E1EF687D15212A3F00AF5FDB /* Option+Extras.m in Sources */,
+				E1EF688315212F1100AF5FDB /* Decision.m in Sources */,
+				E1EF688615212F1100AF5FDB /* Option.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,14 +1003,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E1231C06151D8232009D214A /* Model.xcdatamodeld */ = {
+		E1231C06151D8232009D214A /* decide.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E1231C07151D8232009D214A /* Model.xcdatamodel */,
+				E1231C07151D8232009D214A /* decide.xcdatamodel */,
 			);
-			currentVersion = E1231C07151D8232009D214A /* Model.xcdatamodel */;
-			name = Model.xcdatamodeld;
-			path = Model/Model.xcdatamodeld;
+			currentVersion = E1231C07151D8232009D214A /* decide.xcdatamodel */;
+			name = decide.xcdatamodeld;
+			path = Model/decide.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

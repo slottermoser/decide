@@ -7,6 +7,7 @@
 //
 
 #import "IDObject.h"
+#import "NSManagedObject+RBExtras.h"
 
 @interface IDObject (Extras)
 

@@ -7,7 +7,7 @@
 //
 
 #import "IDLoginVC.h"
-#import "IDHTTPRequest.h"
+#import "IDLoginManager.h"
 
 @interface IDLoginVC ()
 
@@ -25,6 +25,11 @@
 @synthesize passwordField = _passwordField;
 @synthesize loginButton   = _loginButton;
 @synthesize errorLabel    = _errorLabel;
+
+- (void)viewDidLoad {
+    [[self usernameField] setDelegate:self];
+    [[self passwordField] setDelegate:self];
+}
 
 - (void)viewDidUnload {
     [self setUsernameField:nil];
@@ -50,10 +55,12 @@
 
 - (IBAction)login:(id)sender {
     
-    IDHTTPRequest * request = [IDHTTPRequest new];
-    [request loginWithUsername:[[self usernameField] text]
-                      password:[[self passwordField] text]
-                         block:
+    [[self usernameField] resignFirstResponder];
+    [[self passwordField] resignFirstResponder];
+    
+    [[IDLoginManager defaultManager] loginWithUsername:[[self usernameField] text]
+                                              password:[[self passwordField] text]
+                                                 block:
      ^(NSString * errMsg, NSError * error) {
          
          if (errMsg) {
@@ -68,13 +75,31 @@
                                        sender:self];
          }
      }];
-    
-    [[self usernameField] resignFirstResponder];
-    [[self passwordField] resignFirstResponder];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+}
+
+
+#pragma mark - UITextFieldDelegate methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if (textField == [self usernameField]) {
+        [[self passwordField] becomeFirstResponder];
+        return NO;
+    }
+    else if (textField == [self passwordField]) {
+        [[self passwordField] resignFirstResponder];
+        [self login:textField];
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    return YES;
 }
 
 @end

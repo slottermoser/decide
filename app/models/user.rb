@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
                           :class_name => 'Decision', :association_foreign_key => "decision_id"
   has_many :created_decisions, :class_name => "Decision"
   has_many :created_choices, :class_name => "Choice", :foreign_key => "creator"
-  has_many :votes
+  has_many :votes, :foreign_key => "voter"
   has_many :discussion_entries, :group => 'discussion_id'
   has_many :discussions_created
 end

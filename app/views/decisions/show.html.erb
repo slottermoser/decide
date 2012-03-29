@@ -17,3 +17,44 @@
 
 <%= link_to 'Edit', edit_decision_path(@decision) %> |
 <%= link_to 'Back', decisions_path %>
+
+  <script type="text/javascript">
+  	socket = io.connect('<%= event_server_url %>');
+	  socket.on('connect', function () {
+	  	socket.emit('set id', {id: <%= @discussion.id %>})
+	    socket.on('new comment', function (data) {
+	      discussion.add_new_entry(data.entry_info)
+	    });
+	    socket.on('new reply', function (data) {
+	   	  console.log(data);
+	   	  console.log(Entry.reg);
+	      Entry.reg[data.entry_info.entry.parent_id].add_child(data.entry_info);
+	    });
+	  });
+	$("#page_discussion").append(discussion.build());
+	$("#new_thread").bind('click', function(){
+		var comment_input = $('<textarea>');
+		var content = $("<div>").attr({'class':'new_comment'}).append(
+			$('<label>').attr({'for': 'comment_input'}).append("Comment:")
+		).append(comment_input);
+		new ModalWindow({
+			okButtonText:'Save Comment',
+			okCallback:function(){
+				$.post(
+			      '/discussion/new_comment/' + discussion.id, 
+			      {text: comment_input.val()},
+			      function (data) {
+			      	if(data.status == 'success')
+			      	{
+			          	discussion.add_new_entry(data.entry_info)
+			      		socket.emit('new comment', {entry_info: data.entry_info})
+			      	}
+			        else
+			          console.error(data.message)
+			      })
+			},
+			cancelButtonText:'Cancel',
+			title:'Save Comment'
+		}).set_content(content).show();
+	});
+  </script>

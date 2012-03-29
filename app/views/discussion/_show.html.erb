@@ -7,7 +7,7 @@
 	discussion = new Discussion(<%= generate_entries(@discussion.top_level_entries).to_json.html_safe %>,{
 		id:<%= @discussion.id %>
 	})
-	socket = io.connect('<%= root_url[0...-1] %>:8080');
+	socket = io.connect('<%= event_server_url %>');
 	  socket.on('connect', function () {
 	  	socket.emit('set id', {id: <%= @discussion.id %>})
 	    socket.on('new comment', function (data) {

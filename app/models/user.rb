@@ -5,10 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :created_choices, :votes
   has_and_belongs_to_many :participating_decisions, :join_table => "decisions_participants",
                           :class_name => 'Decision', :association_foreign_key => "decision_id"
   has_many :created_decisions, :class_name => "Decision"
+  has_many :created_choices, :class_name => "Choice", :foreign_key => "creator"
+  has_many :votes
   has_many :discussion_entries, :group => 'discussion_id'
   has_many :discussions_created
 end

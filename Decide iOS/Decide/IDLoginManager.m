@@ -43,19 +43,30 @@
     [request loginWithUsername:username
                       password:password
                          block:
-     ^(NSString * errMsg, NSError * error){
+     ^(id response, NSError * error){
          
-         // This is just to ignore the web service.
-#if defined(DEBUG)
-         errMsg = nil;
-         error = nil;
-#endif
-         
-         if (!errMsg && !error)
+         if (response && !error) {
              [self setCurrentUsername:username];
+             
+             User * user = [self currentUser];
+             
+             if (!user) {
+                 NSManagedObjectContext * moc = [self moc];
+                 user = [User createUserWithUsername:[self currentUsername]
+                                           inContext:moc];
+                 
+                 [user setObjID:[response valueForKey:@"id"]];
+                 error = nil;
+                 
+                 [moc save:&error];
+                 
+                 [RBReporter logError:error];
+             }
+             
+         }
          
          if (block)
-             block(errMsg, error);
+             block(response, error);
      }];
 }
 
@@ -84,19 +95,7 @@
                                            error:&error];
     [RBReporter logError:error];
     
-    User * user = [results lastObject];
-    
-    if (!user) {
-        user = [User createUserWithUsername:[self currentUsername]
-                                  inContext:moc];
-        error = nil;
-        
-        [moc save:&error];
-        
-        [RBReporter logError:error];
-    }
-    
-    return user;
+    return [results lastObject];
 }
 
 @end

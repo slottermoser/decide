@@ -17,6 +17,8 @@
     
     NSLog(@"Application launched with options: %@", launchOptions);
     
+    // TODO: Check the launch options for notification payload. 
+    
     //Init Airship launch options
     NSMutableDictionary * takeOffOptions = [NSDictionary dictionaryWithObjectsAndKeys:
                                             launchOptions, UAirshipTakeOffOptionsAnalyticsKey, 

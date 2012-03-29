@@ -12,7 +12,7 @@
 
 @class Decision;
 
-@interface IDDecisionDetailVC : IDBaseVC <UITableViewDataSource>
+@interface IDDecisionDetailVC : IDBaseVC <UITableViewDataSource, UITextFieldDelegate>
 
 @property (nonatomic, strong) Decision * decision;
 @property (nonatomic, assign, getter=isInEditMode) BOOL editMode;

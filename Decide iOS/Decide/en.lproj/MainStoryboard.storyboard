@@ -3,7 +3,7 @@
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--LoginVC - Log In-->
@@ -166,7 +166,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IDDecisionDescriptionCell" id="8cc-Nf-EiN" customClass="IDDecisionDetailCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IDDecisionDescriptionCell" id="8cc-Nf-EiN" customClass="IDDecisionDetailCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -195,7 +195,7 @@
                                             <outlet property="mainLabel" destination="D4b-0u-8f1" id="FdO-fx-Ysh"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IDNewDecisionCell" id="Cbt-EN-d3O" customClass="IDDecisionDetailCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IDNewDecisionCell" id="Cbt-EN-d3O" customClass="IDDecisionDetailCell">
                                         <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -223,7 +223,7 @@
                                             <outlet property="textField" destination="NG6-M5-r7y" id="UeE-Dc-R3E"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IDOptionDescriptionCell" id="kkl-LN-RsE" customClass="IDDecisionDetailCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IDOptionDescriptionCell" id="kkl-LN-RsE" customClass="IDDecisionDetailCell">
                                         <rect key="frame" x="0.0" y="110" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -260,7 +260,7 @@
                                             <outlet property="rightLabel" destination="DHO-6S-seJ" id="ucw-47-Y5i"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IDNewOptionCell" id="oJ6-bu-heY" customClass="IDDecisionDetailCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="IDNewOptionCell" id="oJ6-bu-heY" customClass="IDDecisionDetailCell">
                                         <rect key="frame" x="0.0" y="154" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -305,6 +305,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="discussionButton" destination="mbi-UW-69L" id="B3j-KY-dkR"/>
+                        <outlet property="tableView" destination="Y69-0b-Dne" id="PfZ-vC-FDA"/>
                     </connections>
                 </viewController>
             </objects>
@@ -413,6 +414,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IDDecisionDetailVC.h"/>
             <relationships>
                 <relationship kind="outlet" name="discussionButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="IDDecisionsVC" superclassName="IDBaseVC">

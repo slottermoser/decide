@@ -13,6 +13,7 @@
 #import "IDDecisionCell.h"
 #import "RBReporter.h"
 #import "IDLoginManager.h"
+#import "IDHTTPRequest.h"
 
 @interface IDDecisionsVC ()
 
@@ -55,7 +56,7 @@
     
     // !!!: I'm not sending a logout request to the web app just to keep things simple. 
     
-    [[self navigationController] popViewControllerAnimated:YES];
+//    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

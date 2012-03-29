@@ -19,7 +19,7 @@
 @property (nonatomic, strong) IBOutlet UILabel * mainLabel;
 @property (nonatomic, strong) IBOutlet UILabel * detailLabel;
 @property (nonatomic, strong) IBOutlet UILabel * rightLabel;
-@property (nonatomic, strong) IBOutlet UITextField * textField;
+@property (nonatomic, strong, readwrite) IBOutlet UITextField * textField;
 
 @end
 
@@ -64,6 +64,10 @@
         [[self detailLabel] setText:detailText];
         [[self rightLabel] setText:rightText];
     }
+}
+
+- (void)setTextFieldDelegate:(id<UITextFieldDelegate>)delegate {
+    [[self textField] setDelegate:delegate];
 }
 
 @end

@@ -10,4 +10,11 @@
 
 @implementation Option (Extras)
 
++ (Option *)createOptionInContext:(NSManagedObjectContext *)context {
+    
+    Option * option = (Option *)[self createManagedObjectInContext:context];
+    
+    return option;
+}
+
 @end

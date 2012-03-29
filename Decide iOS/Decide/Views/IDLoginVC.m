@@ -63,10 +63,7 @@
                                                  block:
      ^(NSString * errMsg, NSError * error) {
          
-         if (errMsg) {
-             [self setErrorText:errMsg];
-         }
-         else if (error) {
+         if (error) {
              [self setErrorText:[error localizedDescription]];
          }
          else {

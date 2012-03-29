@@ -15,9 +15,12 @@
 
 @property (nonatomic, strong, readonly) Decision * decision;
 @property (nonatomic, strong, readonly) Option * option;
+@property (nonatomic, strong, readonly) IBOutlet UITextField * textField;
 
 - (void)setupWithDecision:(Decision *)decision editMode:(BOOL)editMode;
 
 - (void)setupWithOption:(Option *)option editMode:(BOOL)editMode;
+
+- (void)setTextFieldDelegate:(id<UITextFieldDelegate>)delegate;
 
 @end

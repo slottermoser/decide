@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^IDLoginBlock)(NSString * errMsg, NSError * error);
+typedef void(^IDLoginBlock)(id response, NSError * error);
 
 @class User;
 

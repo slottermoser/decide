@@ -8,6 +8,8 @@
 
 #import "IDHTTPRequest.h"
 #import "AFJSONRequestOperation.h"
+#import "Decision+Extras.h"
+#import "Option+Extras.h"
 
 NSString * const kBaseURL = @"http://decide.dshumes.com";
 
@@ -41,49 +43,7 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
     return request;
 }
 
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password block:(IDHTTPRequestBlock)block {
-    
-    NSParameterAssert(username && password && block);
-    
-    NSString * json = [NSString stringWithFormat:
-                       @"{\"user\":{\"email\":\"%@\",\"password\":\"%@\",\"remember_me\":\"0\"}}", 
-                       username, 
-                       password];
-    
-    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/users/sign_in.json" 
-                                                             method:@"POST" 
-                                                           jsonBody:json];
-    AFJSONRequestOperation * op = nil;
-    op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                         success:
-          ^(NSURLRequest * request, NSHTTPURLResponse * response, id JSON) {
-              
-              NSString * errStr = [JSON valueForKey:IDHTTPRequestErrorKey];
-              
-              if (errStr) {
-                  NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                             errStr, NSLocalizedDescriptionKey,
-                                             nil];
-                  NSError * error = [NSError errorWithDomain:IDHTTPRequestErrorDomain
-                                                        code:IDHTTPRequestLoginErrorCode
-                                                    userInfo:userInfo];
-                  block(errStr, error);
-              }
-              else
-                  block(nil, nil);
-              
-          } failure:
-          ^(NSURLRequest * request, NSHTTPURLResponse * response, NSError * error, id JSON) {
-              block([JSON valueForKey:IDHTTPRequestErrorKey], error);
-          }];
-    [op start];
-}
-
-- (void)logoutBlock:(IDHTTPRequestBlock)block {
-    
-    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/users/sign_out.json" 
-                                                             method:@"DELETE" 
-                                                           jsonBody:@"{}"];
+- (void)performRequest:(NSURLRequest *)request block:(IDHTTPRequestBlock)block {
     
     AFJSONRequestOperation * op = nil;
     op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
@@ -102,13 +62,102 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
                   block(errStr, error);
               }
               else
-                  block(nil, nil);
+                  block(JSON, nil);
               
           } failure:
           ^(NSURLRequest * request, NSHTTPURLResponse * response, NSError * error, id JSON) {
-              block([JSON valueForKey:IDHTTPRequestErrorKey], error);
+              block(nil, error);
           }];
     [op start];
+}
+
+
+#pragma mark - Authorization
+
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password block:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(username && password && block);
+    
+    NSString * json = [NSString stringWithFormat:
+                       @"{\"user\":{\"email\":\"%@\",\"password\":\"%@\",\"remember_me\":\"0\"}}", 
+                       username, 
+                       password];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/users/sign_in.json" 
+                                                             method:@"POST" 
+                                                           jsonBody:json];
+    [self performRequest:request block:block];
+}
+
+- (void)logoutBlock:(IDHTTPRequestBlock)block {
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/users/sign_out.json" 
+                                                             method:@"DELETE" 
+                                                           jsonBody:@"{}"];
+    [self performRequest:request block:block];
+}
+
+
+#pragma mark - Decisions
+
+- (void)createDecision:(Decision *)decision block:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(decision);
+    
+    NSString * json = [NSString stringWithFormat:
+                       @"{\"title\":\"%@\"}", 
+                       [decision text]];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/decisions/create.json" 
+                                                             method:@"POST" 
+                                                           jsonBody:json];
+    [self performRequest:request block:block];
+}
+
+- (void)decisionWithID:(NSUInteger)objID block:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(block);
+    
+    NSString * path = [NSString stringWithFormat:
+                       @"/decisions/%u.json", 
+                       objID];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
+                                                             method:@"GET" 
+                                                           jsonBody:@""];
+    [self performRequest:request block:block];
+}
+
+
+#pragma mark - Options
+
+- (void)createOption:(Option *)option block:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(option);
+    
+    NSString * json = [NSString stringWithFormat:
+                       @"{\"title\":\"%@\", \"decision_id\":%@}", 
+                       [option text],
+                       [[option decision] objID]];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/options/create.json" 
+                                                             method:@"POST" 
+                                                           jsonBody:json];
+    [self performRequest:request block:block];
+}
+
+- (void)optionWithID:(NSUInteger)objID block:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(block);
+    
+    NSString * path = [NSString stringWithFormat:
+                       @"/options/%u.json", 
+                       objID];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
+                                                             method:@"GET" 
+                                                           jsonBody:@""];
+    [self performRequest:request block:block];
 }
 
 @end

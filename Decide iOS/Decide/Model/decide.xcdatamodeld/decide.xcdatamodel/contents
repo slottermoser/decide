@@ -5,7 +5,7 @@
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="discussion" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Discussion" inverseName="decision" inverseEntity="Discussion" syncable="YES"/>
         <relationship name="options" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Option" inverseName="decision" inverseEntity="Option" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="decisions" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="decisions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Discussion" representedClassName="Discussion" parentEntity="IDObject" syncable="YES">
         <relationship name="decision" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Decision" inverseName="discussion" inverseEntity="Decision" syncable="YES"/>
@@ -17,6 +17,7 @@
     </entity>
     <entity name="IDObject" representedClassName="IDObject" syncable="YES">
         <attribute name="creationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="objID" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <entity name="Message" representedClassName="Message" parentEntity="IDObject" syncable="YES">
         <attribute name="text" attributeType="String" syncable="YES"/>
@@ -25,7 +26,7 @@
     <entity name="Option" representedClassName="Option" parentEntity="IDObject" syncable="YES">
         <attribute name="text" attributeType="String" syncable="YES"/>
         <attribute name="voteCount" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
-        <attribute name="voted" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="voted" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="decision" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Decision" inverseName="options" inverseEntity="Decision" syncable="YES"/>
     </entity>
     <entity name="Preferences" representedClassName="Preferences" parentEntity="IDObject" syncable="YES">
@@ -41,7 +42,7 @@
         <element name="Decision" positionX="-245" positionY="30" width="128" height="120"/>
         <element name="Discussion" positionX="-63" positionY="150" width="128" height="75"/>
         <element name="Group" positionX="-738" positionY="12" width="128" height="75"/>
-        <element name="IDObject" positionX="-254" positionY="-180" width="128" height="60"/>
+        <element name="IDObject" positionX="-254" positionY="-180" width="128" height="75"/>
         <element name="Message" positionX="-414" positionY="297" width="128" height="75"/>
         <element name="Option" positionX="-45" positionY="-9" width="128" height="105"/>
         <element name="Preferences" positionX="-459" positionY="144" width="128" height="60"/>

@@ -7,7 +7,10 @@
 //
 
 #import "Option.h"
+#import "IDObject+Extras.h"
 
 @interface Option (Extras)
+
++ (Option *)createOptionInContext:(NSManagedObjectContext *)context;
 
 @end

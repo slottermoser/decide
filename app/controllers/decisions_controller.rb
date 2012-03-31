@@ -28,6 +28,7 @@ class DecisionsController < ApplicationController
   # GET /decisions/1.json
   def show
     @decision = Decision.find(params[:id])
+    @choices = @decision.choices
     @discussion = @decision.discussion
 
     respond_to do |format|

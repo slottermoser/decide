@@ -13,7 +13,30 @@
 	</div>
 </div>
 
-<%= render 'discussion/show'%>
+<%= render 'choice/show' %>
+
+<%= render 'discussion/show_inline' %>
 
 <%= link_to 'Edit', edit_decision_path(@decision) %> |
 <%= link_to 'Back', decisions_path %>
+
+  <script type="text/javascript">
+  	socket = io.connect('<%= event_server_url %>');
+	  socket.on('connect', function () {
+	  	socket.emit('set id', {id: <%= @discussion.id %>})
+	    socket.on('new comment', function (data) {
+	      discussion.add_new_entry(data.entry_info)
+	    });
+	    socket.on('new reply', function (data) {
+	   	  console.log(data);
+	   	  console.log(Entry.reg);
+	      Entry.reg[data.entry_info.entry.parent_id].add_child(data.entry_info);
+	    });
+	    socket.on('new choice', function (data) {
+	   	  console.log(data);
+	    });
+	    socket.on('vote change', function (data) {
+	   	  console.log(data);
+	    });
+	  });
+  </script>

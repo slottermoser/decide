@@ -4,21 +4,10 @@
 <div id="page_discussion" class="page_discussion row-fluid"></div>
 <button class="btn btn-primary" id="new_thread">Comment</button>
 <script>
-	discussion = new Discussion(<%= generate_entries(@discussion.top_level_entries).to_json.html_safe %>,{
+	discussion = new Discussion(<%= @discussion.entries_as_json.to_json.html_safe %>,{
 		id:<%= @discussion.id %>
-	})
-	socket = io.connect('<%= root_url[0...-1] %>:8080');
-	  socket.on('connect', function () {
-	  	socket.emit('set id', {id: <%= @discussion.id %>})
-	    socket.on('new comment', function (data) {
-	      discussion.add_new_entry(data.entry_info)
-	    });
-	    socket.on('new reply', function (data) {
-	   	  console.log(data);
-	   	  console.log(Entry.reg);
-	      Entry.reg[data.entry_info.entry.parent_id].add_child(data.entry_info);
-	    });
-	  });
+	});
+
 	$("#page_discussion").append(discussion.build());
 	$("#new_thread").bind('click', function(){
 		var comment_input = $('<textarea>');

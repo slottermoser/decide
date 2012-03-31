@@ -1,0 +1,28 @@
+<h2>Choices</h2>
+
+<div class="row-fluid">
+	  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      decision = new Decision(<%= @decision.as_json({}).to_json.html_safe %>)
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        decision.graph();
+      }
+    </script>
+    <div id="chart_div" style="width: 500px; height: 300px;"></div>
+	<!-- <table>
+		<tr>
+			<td>Choice</td>
+			<td>Creator</td>
+			<td>Votes</td>
+		</tr>
+	<% @choices.each do | choice | %>
+		<tr>
+			<td><%= choice.title %></td>
+			<td><%= choice.creator.name %></td>
+			<td><%= choice.vote_count %></td>
+		</tr>
+	<% end %>
+	</table> -->
+</div>

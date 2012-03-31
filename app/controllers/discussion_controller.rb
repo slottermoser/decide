@@ -1,5 +1,13 @@
 class DiscussionController < ApplicationController
+  def show_inline
+  end
+
+  # GET /decisions/1/discussion.json
   def show
+    @decision = Decision.find(params[:decision_id])
+    @discussion = @decision.discussion
+
+    render json: @discussion
   end
 
   def get_entries

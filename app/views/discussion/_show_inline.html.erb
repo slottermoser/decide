@@ -1,0 +1,37 @@
+
+<h2>Discussion</h2>
+
+<div id="page_discussion" class="page_discussion row-fluid"></div>
+<button class="btn btn-primary" id="new_thread">Comment</button>
+<script>
+	discussion = new Discussion(<%= @discussion.entries_as_json.to_json.html_safe %>,{
+		id:<%= @discussion.id %>
+	});
+
+	$("#page_discussion").append(discussion.build());
+	$("#new_thread").bind('click', function(){
+		var comment_input = $('<textarea>');
+		var content = $("<div>").attr({'class':'new_comment'}).append(
+			$('<label>').attr({'for': 'comment_input'}).append("Comment:")
+		).append(comment_input);
+		new ModalWindow({
+			okButtonText:'Save Comment',
+			okCallback:function(){
+				$.post(
+			      '/discussion/new_comment/' + discussion.id, 
+			      {text: comment_input.val()},
+			      function (data) {
+			      	if(data.status == 'success')
+			      	{
+			          	discussion.add_new_entry(data.entry_info)
+			      		socket.emit('new comment', {entry_info: data.entry_info})
+			      	}
+			        else
+			          console.error(data.message)
+			      })
+			},
+			cancelButtonText:'Cancel',
+			title:'Save Comment'
+		}).set_content(content).show();
+	});
+</script>

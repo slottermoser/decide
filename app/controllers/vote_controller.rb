@@ -9,9 +9,9 @@ class VoteController < ApplicationController
     if @vote.save
       @choice.vote_count += 1
       @choice.save
-      render json: @vote, status: :created
+      render :json => {vote: @vote, status: "success"}, status: :created
     else
-      render json: @vote.errors, status: :unprocessable_entity
+      render :json => {errors:@vote.errors, status: "error"}, status: :unprocessable_entity
     end
   end
 
@@ -23,9 +23,9 @@ class VoteController < ApplicationController
       @choice = Choice.find(params[:choice_id])
       @choice.vote_count -= 1
       @choice.save
-      render :json => @vote
+      render :json => {vote: @vote, status: "success"}
     else
-      render :json => {:error => "Delete failed"}, :status => :bad_request
+      render :json => {:error => "Delete failed", status: "error"}, :status => :bad_request
     end
   end
 end

@@ -8,7 +8,7 @@
 	</div>
 	
 	<div class="span12 item">
-	  <span class="description">Asker:</span>
+	  <span class="description">Asked By:</span>
 	  <span class="value"><%= @decision.creator.name %></span>
 	</div>
 </div>
@@ -28,15 +28,16 @@
 	      discussion.add_new_entry(data.entry_info)
 	    });
 	    socket.on('new reply', function (data) {
-	   	  console.log(data);
-	   	  console.log(Entry.reg);
+	   	  // console.log(data);
+	   	  // console.log(Entry.reg);
 	      Entry.reg[data.entry_info.entry.parent_id].add_child(data.entry_info);
 	    });
 	    socket.on('new choice', function (data) {
-	   	  console.log(data);
+	   	  // console.log(data);
 	    });
 	    socket.on('vote change', function (data) {
-	   	  console.log(data);
+	   	  // console.log(data);
+	   	  decision.voteChange(data);
 	    });
 	  });
   </script>

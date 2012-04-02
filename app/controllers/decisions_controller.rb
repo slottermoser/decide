@@ -30,10 +30,11 @@ class DecisionsController < ApplicationController
     @decision = Decision.find(params[:id])
     @choices = @decision.choices
     @discussion = @decision.discussion
+    @my_id = current_user.id
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @decision }
+      format.json { render json: @decision}
     end
   end
 

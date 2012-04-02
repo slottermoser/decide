@@ -19,3 +19,84 @@ label {
     
   }
 }
+
+#votes-graph-area {
+    width:400px;
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.graph-top {
+    border-left: 2px solid black;
+    height:10px;
+}
+.graph-choice {
+    border-left: 2px solid black;
+    padding: 10px 0px;
+    height: 30px;
+}
+.graph-choice-bar {
+    height:30px;
+    position: absolute;
+    display: inline-block;
+    color: #333333;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    background-color: #c5c5c5;
+    background-image: -moz-linear-gradient(top, #ffffff, #b6b6b6);
+    background-image: -ms-linear-gradient(top, #ffffff, #b6b6b6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#b6b6b6));
+    background-image: -webkit-linear-gradient(top, #ffffff, #b6b6b6);
+    background-image: -o-linear-gradient(top, #ffffff, #b6b6b6);
+    background-image: linear-gradient(top, #ffffff, #b6b6b6);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#b6b6b6', GradientType=0);
+    border-color: #b6b6b6 #b6b6b6 #bfbfbf;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    border: 1px solid #ccc;
+    border-bottom-color: #bbb;
+    -webkit-border-top-right-radius: 4px;
+    -moz-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    -moz-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.graph-bottom {
+    height:10px;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.graph-choice-text{
+    position: absolute;
+    padding-left:5px;
+}
+.graph-choice-title{
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    line-height:30px;
+    padding-right:4px;
+}
+.graph-choice-votes {
+    display: inline-block;
+    position: relative;
+    line-height:30px;
+}
+.graph-top-diff {
+    height:10px;
+}
+.vote-buttons {
+    display: inline-block;
+}
+.vote-button {
+    padding: 10px 0px;
+    height: 30px;
+    width: 50px;
+}

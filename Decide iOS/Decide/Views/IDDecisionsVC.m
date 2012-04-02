@@ -54,9 +54,11 @@
 
 - (IBAction)logout:(id)sender {
     
-    // !!!: I'm not sending a logout request to the web app just to keep things simple. 
-    
-//    [[self navigationController] popViewControllerAnimated:YES];
+    IDHTTPRequest * request = [IDHTTPRequest new];
+    [request logoutBlock:^(id response, NSError * error) {
+        // Pops the view regardless of the result of the logout, for simplicity.
+        [[self navigationController] popViewControllerAnimated:YES];
+    }];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

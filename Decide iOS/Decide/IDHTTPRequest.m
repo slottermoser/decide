@@ -10,6 +10,8 @@
 #import "AFJSONRequestOperation.h"
 #import "Decision+Extras.h"
 #import "Option+Extras.h"
+#import "Message+Extras.h"
+#import "Discussion+Extras.h"
 
 NSString * const kBaseURL = @"http://decide.dshumes.com";
 
@@ -18,6 +20,7 @@ NSString * const IDHTTPRequestErrorKey = @"error";
 NSString * const IDHTTPRequestErrorDomain = @"IDHTTPRequestErrorDomain";
 const NSInteger IDHTTPRequestLoginErrorCode = 123; 
 const NSInteger IDHTTPRequestLogoutErrorCode = 124; 
+
 
 @implementation IDHTTPRequest
 
@@ -136,11 +139,14 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
     NSParameterAssert(option);
     
     NSString * json = [NSString stringWithFormat:
-                       @"{\"title\":\"%@\", \"decision_id\":%@}", 
-                       [option text],
+                       @"{\"title\":\"%@\"}", 
+                       [option text]];
+    
+    NSString * path = [NSString stringWithFormat:
+                       @"/decisions/%@/options/create.json",
                        [[option decision] objID]];
     
-    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/options/create.json" 
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
                                                              method:@"POST" 
                                                            jsonBody:json];
     [self performRequest:request block:block];
@@ -152,6 +158,41 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
     
     NSString * path = [NSString stringWithFormat:
                        @"/options/%u.json", 
+                       objID];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
+                                                             method:@"GET" 
+                                                           jsonBody:@""];
+    [self performRequest:request block:block];
+}
+
+#pragma mark - Discussions
+
+- (void)createMessage:(Message *)message block:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(message);
+    
+    NSString * json = [NSString stringWithFormat:
+                       @"{\"entry\":\"%@\"}", 
+                       [message text]];
+    
+    NSString * path = [NSString stringWithFormat:
+                       @"/decisions/%@/discussion_entries/create.json",
+                       [[[message discussion] decision] objID]];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
+                                                             method:@"POST" 
+                                                           jsonBody:json];
+    [self performRequest:request block:block];
+}
+
+- (void)messageWithID:(NSUInteger)objID inDecision:(Decision *)decision block:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(block);
+    
+    NSString * path = [NSString stringWithFormat:
+                       @"/decisions/%@/discussion_entries/%u.json",
+                       [decision objID],
                        objID];
     
     NSMutableURLRequest * request = [self mutableURLRequestWithPath:path

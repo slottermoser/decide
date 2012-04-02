@@ -20,6 +20,7 @@
         <attribute name="objID" attributeType="Integer 32" syncable="YES"/>
     </entity>
     <entity name="Message" representedClassName="Message" parentEntity="IDObject" syncable="YES">
+        <attribute name="parentID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="discussion" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Discussion" inverseName="messages" inverseEntity="Discussion" syncable="YES"/>
     </entity>
@@ -43,7 +44,7 @@
         <element name="Discussion" positionX="-63" positionY="150" width="128" height="75"/>
         <element name="Group" positionX="-738" positionY="12" width="128" height="75"/>
         <element name="IDObject" positionX="-254" positionY="-180" width="128" height="75"/>
-        <element name="Message" positionX="-414" positionY="297" width="128" height="75"/>
+        <element name="Message" positionX="-414" positionY="297" width="128" height="90"/>
         <element name="Option" positionX="-45" positionY="-9" width="128" height="105"/>
         <element name="Preferences" positionX="-459" positionY="144" width="128" height="60"/>
         <element name="User" positionX="-504" positionY="-0" width="128" height="105"/>

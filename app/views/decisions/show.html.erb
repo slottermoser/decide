@@ -41,3 +41,13 @@
 	    });
 	  });
   </script>
+
+<h2 style="padding-top:30px">Participants: <%= @decision.participants.count %></h2>
+<div class="row question-info">
+<% @decision.participants.all.each do |p| %>
+	<div class="span12 item">
+	  <span class="description"><%= p.name %></span>
+	  <span class="value"><%= p.email %></span>
+	</div>
+<% end %>
+</div>

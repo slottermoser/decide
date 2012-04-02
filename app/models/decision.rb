@@ -46,7 +46,7 @@ class Decision < ActiveRecord::Base
   	base_json[:choices] = self.choices_as_json
     base_json[:votes] = votes
     base_json[:my_votes] = user_votes
-    base_json[:voter_count] = self.participants.count + 1 #add 1 for creator
+    base_json[:voter_count] = self.participants.count
     base_json[:my_id] = options[:user_id]
   	return base_json
   end

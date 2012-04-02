@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :votes, :foreign_key => "voter"
   has_many :discussion_entries, :group => 'discussion_id'
   has_many :discussions_created
+  belongs_to :last_ref_decision, :class_name => "Decision", :foreign_key => "last_decision_ref"
 
   def add_to_all_discussions
     self.participating_decisions = Decision.all

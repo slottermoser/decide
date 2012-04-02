@@ -4,6 +4,7 @@ class TwilioController < ApplicationController
     body = params["Body"].downcase
     parameters = body.split(" ")
     self.send(parameters[0], parameters[1...(parameters.length)])
+    render :nothing => true
   end
 
   def decisions(*args)
@@ -13,7 +14,6 @@ class TwilioController < ApplicationController
       message += "ID:" + decision.id.to_s + "\n"
     end
     self.send_message(@user.phone_number, message)
-    render :nothing => true
   end
   
   def decision(*args)
@@ -21,19 +21,52 @@ class TwilioController < ApplicationController
     id = data[0]
     command = data[1].downcase
     decision = Decision.find(id)
+    @user.last_ref_decision = decision
     case command
     when "title"
       self.send_message(@user.phone_number, decision.title)
     when "choices"
-      
+      message = "Choices: "
+      choices = decision.choices
+      choices.each do |choice|
+        message += " | Title:" + choice.title + ", ID:" + choice.id.to_s
+      end
+      self.send_message(@user.phone_number, message)
     end
-    render :nothing => true
-  end
-
-  def options(*args)
   end
 
   def vote(*args)
+    data = args[0]
+    id = data[0]
+    choice = Choice.find(id)
+    @user.votes.each do |vote|
+      if vote.choice == choice
+        return
+      end
+    end
+    vote = Vote.new
+    vote.voter = @user
+    vote.choice = choice
+    if vote.save
+      choice.vote_count += 1
+      choice.save
+      self.send_message(@user.phone_number, "You have voted successfully")
+    else
+      self.send_message(@user.phone_number, "You're vote was not successful")
+    end
+  end
+  
+  def comment(*args)
+    data = args[0]
+    text = data.join(" ")
+    new_comment = DiscussionEntry.new({:entry => text})
+    new_comment.discussion = @user.last_ref_decision.discussion
+    new_comment.user = @user
+    if new_comment.save
+      self.send_message(@user.phone_number, "You have commented successfully")
+    else
+      self.send_message(@user.phone_number, "You're comment was not successful")
+    end
   end
   
   def send_message(phone_number, message)
@@ -45,8 +78,6 @@ class TwilioController < ApplicationController
 
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
-    puts phone_number
-    puts message
     @twilio_client.account.sms.messages.create(
       :from => "+1#{twilio_phone_number}",
       :to => number_to_send_to,

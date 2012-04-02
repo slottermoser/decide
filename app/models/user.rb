@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   before_save :add_to_all_discussions
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :created_choices, :votes
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :created_choices, :votes, :phone_number
   has_and_belongs_to_many :participating_decisions, :join_table => "decisions_participants",
                           :class_name => 'Decision', :association_foreign_key => "decision_id"
   has_many :created_decisions, :class_name => "Decision"

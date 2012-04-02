@@ -14,6 +14,14 @@
   <div class="well">
     <%= f.label "The question", :class => 'control-label' %>
     <div class="controls"><%= f.text_field :title, :class => "input-xlarge" %></div>
+    <%= f.label "Choice 1", :class => 'control-label' %>
+    <div class="controls"><input name="choice1" class="input-xlarge"></div>
+    <%= f.label "Choice 2", :class => 'control-label' %>
+    <div class="controls"><input name="choice2" class="input-xlarge"></div>
+    <%= f.label "Choice 3", :class => 'control-label' %>
+    <div class="controls"><input name="choice3" class="input-xlarge"></div>
+    <%= f.label "Choice 4", :class => 'control-label' %>
+    <div class="controls"><input name="choice4" class="input-xlarge"></div>
   </div>
   <div class="actions">
     <%= f.submit(:class => "btn") %>

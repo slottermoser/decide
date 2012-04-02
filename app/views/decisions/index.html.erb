@@ -6,7 +6,7 @@
 	<thead>
 	  	<tr>
 	  	  <th>Title</th>
-	  	  <th>Actions</th>
+	  	  <th style="width:200px">Actions</th>
 	  	</tr>
   	</thead>
 
@@ -28,7 +28,7 @@
 	<thead>
 	  	<tr>
 	  	  <th>Title</th>
-	  	  <th>Actions</th>
+	  	  <th style="width:200px">Actions</th>
 	  	</tr>
   	</thead>
 
@@ -37,9 +37,7 @@
 	  <tr>
 	    <td><%= decision.title %></td>
 	    <td>
-	    	<%= link_to 'Show', decision, {:class => "btn"} %> | 
-	    	<%= link_to 'Edit', edit_decision_path(decision), {:class => "btn btn-primary"} %> | 
-	    	<%= link_to 'Destroy', decision,  {:class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete} %>
+	    	<%= link_to 'Show', decision, {:class => "btn"} %>
 	    </td>
 	  </tr>
 	<% end %>

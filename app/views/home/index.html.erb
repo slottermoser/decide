@@ -1,3 +1,7 @@
 <% provide(:currentPage, 'Home') %>
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Making group decisions easer.</h1>
+<p>Decide together. No matter where you are.</p>
+
+<p style="text-align:center">
+<%= link_to "Google Signin", user_omniauth_authorize_path(:google), {:class => "btn btn-primary"} %>
+</p>

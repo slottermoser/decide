@@ -58,12 +58,38 @@ class DecisionsController < ApplicationController
   # POST /decisions.json
   def create
     @decision = Decision.new(params[:decision])
+    logger.info "----------------"
+    logger.info params
+    logger.info "----------------"
     @decision.creator = current_user
 
     respond_to do |format|
       if @decision.save
+        #save choices
+        if params[:choice1] && params[:choice1] != ""
+          choice1 = @decision.choices.build
+          choice1.title = params[:choice1]
+          choice1.save
+        end
+        if params[:choice2] && params[:choice2] != ""
+          choice1 = @decision.choices.build
+          choice1.title = params[:choice2]
+          choice1.save
+        end
+        if params[:choice3] && params[:choice3] != ""
+          choice1 = @decision.choices.build
+          choice1.title = params[:choice3]
+          choice1.save
+        end
+        if params[:choice4] && params[:choice4] != ""
+          choice1 = @decision.choices.build
+          choice1.title = params[:choice4]
+          choice1.save
+        end
+
         discussion = Discussion.new
         @decision.discussion = discussion
+        @decision.participants = User.all
         discussion.save
         format.html { redirect_to @decision, notice: 'Decision was successfully created.' }
         format.json { render json: @decision, status: :created, location: @decision }

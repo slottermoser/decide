@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Info</h2>
+<div class="row question-info">
+	<div class="span12 item">
+	  <span class="description">Question:</span>
+	  <span class="value"><%= @decision.title %></span>
+	</div>
+	
+	<div class="span12 item">
+	  <span class="description">Asked By:</span>
+	  <span class="value"><%= @decision.creator.name %></span>
+	</div>
+</div>
+
+<%= render 'choice/show' %>
+
+<%= render 'discussion/show_inline' %>
+
+<%= link_to 'Edit', edit_decision_path(@decision) %> |
+<%= link_to 'Back', decisions_path %>
+
+  <script type="text/javascript">
+  	socket = io.connect('<%= event_server_url %>');
+	  socket.on('connect', function () {
+	  	socket.emit('set id', {id: <%= @discussion.id %>})
+	    socket.on('new comment', function (data) {
+	      discussion.add_new_entry(data.entry_info)
+	    });
+	    socket.on('new reply', function (data) {
+	   	  // console.log(data);
+	   	  // console.log(Entry.reg);
+	      Entry.reg[data.entry_info.entry.parent_id].add_child(data.entry_info);
+	    });
+	    socket.on('new choice', function (data) {
+	   	  // console.log(data);
+	    });
+	    socket.on('vote change', function (data) {
+	   	  // console.log(data);
+	   	  decision.voteChange(data);
+	    });
+	  });
+  </script>

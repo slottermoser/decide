@@ -7,14 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<nav>
-	<ul class="hmenu">
-	  <%= render 'devise/menu/registration_items' %>
-	  <%= render 'devise/menu/login_items' %>
-	</ul>
-</nav>
+<%= render "layouts/header"%>
+<div class="container">
 <%= yield %>
+
+<hr />
+<footer>
+	<p>&copy;2012 The Decide Team</p>
+</footer>
+</div>
 
 </body>
 </html>

@@ -1,0 +1,51 @@
+<% provide(:currentPage, 'Decisions') %>
+<h1>Decisions</h1>
+
+<h2>Created</h2>
+<table class="table table-bordered">
+	<thead>
+	  	<tr>
+	  	  <th>Title</th>
+	  	  <th>Actions</th>
+	  	</tr>
+  	</thead>
+
+	<tbody>
+	<% @decisions.each do |decision| %>
+	  <tr>
+	    <td><%= decision.title %></td>
+	    <td>
+	    	<%= link_to 'Show', decision, {:class => "btn"} %> 
+	    	<%= link_to 'Edit', edit_decision_path(decision), {:class => "btn btn-primary"} %>
+	    	<%= link_to 'Delete', decision, {:class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete}  %>
+	    </td>
+	  </tr>
+	<% end %>
+	</tbody>
+</table>
+<h2>Participating</h2>
+<table class="table table-bordered">
+	<thead>
+	  	<tr>
+	  	  <th>Title</th>
+	  	  <th>Actions</th>
+	  	</tr>
+  	</thead>
+
+	<tbody>
+	<% @participating.each do |decision| %>
+	  <tr>
+	    <td><%= decision.title %></td>
+	    <td>
+	    	<%= link_to 'Show', decision, {:class => "btn"} %> | 
+	    	<%= link_to 'Edit', edit_decision_path(decision), {:class => "btn btn-primary"} %> | 
+	    	<%= link_to 'Destroy', decision,  {:class => "btn btn-danger", :confirm => 'Are you sure?', :method => :delete} %>
+	    </td>
+	  </tr>
+	<% end %>
+	</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Decision', new_decision_path, {:class => "btn btn-primary"} %>

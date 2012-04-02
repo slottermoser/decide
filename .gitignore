@@ -14,7 +14,14 @@
 /log/*.log
 /tmp
 
+# Ignore iOS stuff
 .DS_Store
 Decide iOS/Decide.xcodeproj/project.xcworkspace/xcuserdata/*
 Decide iOS/Decide.xcodeproj/xcuserdata/*
 Decide iOS/Decide/AirshipConfig.plist
+xcuserdata
+Breakpoints.xcbkptlist
+UserInterfaceState.xcuserstate
+
+# Ignore node_modules
+/event_server/node_modules

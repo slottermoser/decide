@@ -1,5 +1,22 @@
 Decide::Application.routes.draw do
-  
+
+  match 'decisions/:decision_id/discussion.json' => 'discussion#show', :method => 'get'
+  match 'decisions/:decision_id/choices/new' => 'choice#new', :method => 'post'
+  post "choice/create"
+  post "choice/update"
+  post "choice/destroy"
+
+  match 'choices/:choice_id/vote.json' => 'vote#create', :method => 'post'
+  match 'choices/:choice_id/delete_vote.json' => 'vote#destroy', :method => 'post'
+
+  match 'discussion/add_reply/:id' => 'discussion#add_reply', :method => 'post'
+  match 'discussion/new_comment/:id' => 'discussion#new_comment', :method => 'post'
+
+  match "about" => "home#about"
+  match "contact"  => "home#contact"
+
+  resources :decisions
+
   root :to => 'home#index'
 
   devise_for :users

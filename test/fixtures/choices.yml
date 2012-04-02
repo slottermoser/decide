@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  creator: 1
+  decision_id: 1
+  vote_count: 1
+
+two:
+  title: MyString
+  creator: 1
+  decision_id: 1
+  vote_count: 1

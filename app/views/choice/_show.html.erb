@@ -1,0 +1,19 @@
+<h2>Choices</h2>
+
+<div class="row-fluid" id="decision-choices">
+    <div id="voting-booth" style="width: 700px;"></div>
+    <script type="text/javascript">
+        decision = new Decision(<%= @decision.as_json({:user_id => @my_id}).to_json.html_safe %>)
+        decision.build_graph();
+
+        $(document).ready(function() {
+            decision.graph();
+
+            $(".vote-button").each(function(index) {
+                $(this).bind('click', function() {
+                    decision.vote(this);
+                });
+            });
+        });
+    </script>
+</div>

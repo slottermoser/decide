@@ -44,6 +44,7 @@ class TwilioController < ApplicationController
     choice = Choice.find(id)
     @user.votes.each do |vote|
       if vote.choice == choice
+        self.send_message(@user.phone_number, "You have already voted for that choice")
         return
       end
     end

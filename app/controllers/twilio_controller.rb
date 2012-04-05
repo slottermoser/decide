@@ -19,20 +19,23 @@ class TwilioController < ApplicationController
   def decision(*args)
     data = args[0]
     id = data[0]
-    command = data[1].downcase
     decision = Decision.find(id)
     @user.last_ref_decision = decision
-    case command
-    when "title"
-      self.send_message(@user.phone_number, decision.title)
-    when "choices"
-      message = "Choices: "
-      choices = decision.choices
-      choices.each do |choice|
-        message += " | Title:" + choice.title + ", ID:" + choice.id.to_s
-      end
-      self.send_message(@user.phone_number, message)
+  end
+  
+  def title(*args)
+    decision = @user.last_ref_decision
+    self.send_message(@user.phone_number, decision.title)
+  end
+  
+  def choices(*args)
+    decision = @user.last_ref_decision
+    message = "Choices: "
+    choices = decision.choices
+    choices.each do |choice|
+      message += " | Title:" + choice.title + ", ID:" + choice.id.to_s
     end
+    self.send_message(@user.phone_number, message)
   end
 
   def vote(*args)

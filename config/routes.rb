@@ -8,8 +8,8 @@ Decide::Application.routes.draw do
   post "choice/update"
   post "choice/destroy"
 
-  match 'choices/:choice_id/vote.json' => 'vote#create', :method => 'post'
-  match 'choices/:choice_id/delete_vote.json' => 'vote#destroy', :method => 'post'
+  match 'choices/:choice_id/vote.json' => 'vote#create', :method => 'get'
+  match 'choices/:choice_id/delete_vote.json' => 'vote#destroy', :method => 'get'
 
   match 'discussion/add_reply/:id' => 'discussion#add_reply', :method => 'post'
   match 'discussion/new_comment/:id' => 'discussion#new_comment', :method => 'post'

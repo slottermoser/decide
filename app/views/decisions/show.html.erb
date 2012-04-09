@@ -21,7 +21,7 @@
 <%= link_to 'Back', decisions_path %>
 
   <script type="text/javascript">
-  	socket = io.connect('<%= event_server_url %>');
+  	socket = io.connect('<%= event_server_url(root_url) %>');
 	  socket.on('connect', function () {
 	  	socket.emit('set id', {id: <%= @discussion.id %>})
 	    socket.on('new comment', function (data) {

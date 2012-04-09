@@ -1,5 +1,16 @@
 class VoteController < ApplicationController
-
+  before_filter :require_login
+  
+  private
+  
+  def require_login
+    if current_user.nil?
+      flash[:error] = "You must be signed in"
+      redirect_to new_user_session_path
+    end
+  end
+  
+  public
   # POST /choices/1/vote.json
   def create
     @choice = Choice.find(params[:choice_id])

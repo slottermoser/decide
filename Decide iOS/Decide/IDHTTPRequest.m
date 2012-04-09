@@ -12,6 +12,7 @@
 #import "Option+Extras.h"
 #import "Message+Extras.h"
 #import "Discussion+Extras.h"
+#import "RBCoreDataManager.h"
 
 NSString * const kBaseURL = @"http://decide.dshumes.com";
 
@@ -20,9 +21,14 @@ NSString * const IDHTTPRequestErrorKey = @"error";
 NSString * const IDHTTPRequestErrorDomain = @"IDHTTPRequestErrorDomain";
 const NSInteger IDHTTPRequestLoginErrorCode = 123; 
 const NSInteger IDHTTPRequestLogoutErrorCode = 124; 
+const NSInteger IDHTTPRequestUnknownErrorCode = 999;
 
+//static 
 
 @implementation IDHTTPRequest
+
+
+#pragma mark - Helper methods
 
 + (NSURL *)baseURL {
     
@@ -39,6 +45,7 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
 - (NSMutableURLRequest *)mutableURLRequestWithPath:(NSString *)path method:(NSString *)method jsonBody:(NSString *)json {
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:path
                                                                                relativeToURL:[[self class] baseURL]]];
+    [request setHTTPShouldHandleCookies:YES];
     [request setHTTPMethod:method];
     [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
     [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
@@ -53,14 +60,17 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
                                                          success:
           ^(NSURLRequest * request, NSHTTPURLResponse * response, id JSON) {
               
-              NSString * errStr = [JSON valueForKey:IDHTTPRequestErrorKey];
+              NSString * errStr = 
+              ([JSON isKindOfClass:[NSDictionary class]]) ? 
+              [JSON valueForKey:IDHTTPRequestErrorKey] : 
+              nil;
               
               if (errStr) {
                   NSDictionary * userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                              errStr, NSLocalizedDescriptionKey,
                                              nil];
                   NSError * error = [NSError errorWithDomain:IDHTTPRequestErrorDomain
-                                                        code:IDHTTPRequestLogoutErrorCode
+                                                        code:IDHTTPRequestUnknownErrorCode
                                                     userInfo:userInfo];
                   block(errStr, error);
               }
@@ -111,7 +121,7 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
                        @"{\"title\":\"%@\"}", 
                        [decision text]];
     
-    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/decisions/create.json" 
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/decisions.json" 
                                                              method:@"POST" 
                                                            jsonBody:json];
     [self performRequest:request block:block];
@@ -131,6 +141,30 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
     [self performRequest:request block:block];
 }
 
+- (void)decisionsWithBlock:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(block);
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/decisions.json"
+                                                             method:@"GET" 
+                                                           jsonBody:@""];
+    [self performRequest:request block:^(id response, NSError * error) {
+        
+        if (error) {
+            block(nil, error);
+        }
+        else {
+            NSMutableArray * decisions = [NSMutableArray arrayWithCapacity:[response count]];
+            NSManagedObjectContext * moc = [[RBCoreDataManager defaultManager] createMOC];
+            
+            for (NSDictionary * decision in response)
+                [decisions addObject:[Decision createDecisionFromDictionary:decision
+                                                                  inContext:moc]];
+            block(decisions, nil);
+        }
+    }];
+}
+
 
 #pragma mark - Options
 
@@ -143,7 +177,7 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
                        [option text]];
     
     NSString * path = [NSString stringWithFormat:
-                       @"/decisions/%@/options/create.json",
+                       @"/decisions/%@/choices/new.json",
                        [[option decision] objID]];
     
     NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
@@ -152,13 +186,15 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
     [self performRequest:request block:block];
 }
 
-- (void)optionWithID:(NSUInteger)objID block:(IDHTTPRequestBlock)block {
+- (void)optionWithID:(NSUInteger)objID inDecision:(Decision *)decision block:(IDHTTPRequestBlock)block {
     
     NSParameterAssert(block);
     
+    // ???: How do I get an Option? There is not method for it. Do I get it with a Decision?
+    
     NSString * path = [NSString stringWithFormat:
-                       @"/options/%u.json", 
-                       objID];
+                       @"/decisions/%@/options/create.json",
+                       [decision objID]];
     
     NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
                                                              method:@"GET" 
@@ -166,7 +202,22 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
     [self performRequest:request block:block];
 }
 
+
 #pragma mark - Discussions
+
+- (void)discussionWithDecisionID:(NSUInteger)objID block:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(block);
+    
+    NSString * path = [NSString stringWithFormat:
+                       @"/decisions/%u/discussion.json",
+                       objID];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
+                                                             method:@"GET" 
+                                                           jsonBody:@""];
+    [self performRequest:request block:block];
+}
 
 - (void)createMessage:(Message *)message block:(IDHTTPRequestBlock)block {
     
@@ -194,6 +245,49 @@ const NSInteger IDHTTPRequestLogoutErrorCode = 124;
                        @"/decisions/%@/discussion_entries/%u.json",
                        [decision objID],
                        objID];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
+                                                             method:@"GET" 
+                                                           jsonBody:@""];
+    [self performRequest:request block:block];
+}
+
+
+#pragma mark - Votes
+
+- (void)upvoteOption:(Option *)option block:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(option);
+    
+    NSString * path = [NSString stringWithFormat:
+                       @"/choices/%@/vote.json",
+                       [option objID]];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
+                                                             method:@"POST" 
+                                                           jsonBody:@""];
+    [self performRequest:request block:block];
+}
+
+- (void)upvoteOptionWithID:(NSUInteger)optionID block:(IDHTTPRequestBlock)block {
+    
+    NSString * path = [NSString stringWithFormat:
+                       @"/choices/%u/vote.json",
+                       optionID];
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
+                                                             method:@"GET" 
+                                                           jsonBody:@""];
+    [self performRequest:request block:block];
+}
+
+- (void)downvoteOption:(Option *)option block:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(option);
+    
+    NSString * path = [NSString stringWithFormat:
+                       @"/choices/%@/delete_vote.json",
+                       [option objID]];
     
     NSMutableURLRequest * request = [self mutableURLRequestWithPath:path
                                                              method:@"GET" 

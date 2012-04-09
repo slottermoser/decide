@@ -7,6 +7,7 @@
 //
 
 #import "User+Extras.h"
+#import "RBReporter.h"
 
 @implementation User (Extras)
 

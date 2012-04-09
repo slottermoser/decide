@@ -7,6 +7,7 @@
 //
 
 #import "IDObject+Extras.h"
+#import "RBReporter.h"
 
 @implementation IDObject (Extras)
 
@@ -17,6 +18,20 @@
         *ioValue = [NSDate date];
     
     return YES;
+}
+
++ (id)objectWithID:(NSUInteger)objID inContext:(NSManagedObjectContext *)context {
+    
+    NSParameterAssert(context);
+    
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([self class])];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"objID = %u", objID]];
+    NSError * error = nil;
+    NSArray * results = [context executeFetchRequest:fetchRequest error:&error];
+    
+    [RBReporter logError:error];
+    
+    return [results lastObject];
 }
 
 @end

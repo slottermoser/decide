@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) IBOutlet UIBarButtonItem * logoutButton;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem * addButton;
+@property (nonatomic, strong) IBOutlet UITableView * tableView;
 @property (nonatomic, copy) NSArray * decisions;
 
 @end
@@ -28,6 +29,7 @@
 
 @synthesize logoutButton = _logoutButton;
 @synthesize addButton    = _addButton;
+@synthesize tableView    = _tableView;
 @synthesize decisions    = _decisions;
 
 - (void)viewDidLoad {
@@ -44,6 +46,35 @@
     
     if (results)
         [self setDecisions:results];
+    
+    [[IDHTTPRequest new] decisionsWithBlock:^(id response, NSError * error) {
+        
+        if (error) {
+            [RBReporter logError:error];
+        }
+        else {
+            
+            if ([response count] == 0)
+                return;
+            
+            NSManagedObjectContext * moc = [[response objectAtIndex:0] managedObjectContext];
+            
+            if (![moc save:&error]) {
+                [RBReporter logError:error];
+                return;
+            }
+            
+            // Grabs all the decisions from the server. 
+            NSMutableArray * newDecisions = [NSMutableArray arrayWithCapacity:[response count]];
+            
+            // Loads the Decisions into this view's MOC.
+            for (Decision * decision in response)
+                [newDecisions addObject:[decision loadIntoMOC:[self moc]]];
+            
+            [self setDecisions:newDecisions];
+            [[self tableView] reloadData];
+        }
+    }];
 }
 
 - (void)viewDidUnload {
@@ -53,6 +84,18 @@
 }
 
 - (IBAction)logout:(id)sender {
+
+//    [[IDHTTPRequest new] upvoteOptionWithID:2 block:^(id response, NSError * error) {
+//        NSLog(@"ERROR: %@", error);
+//    }];
+    
+    
+    
+//    [[IDHTTPRequest new] decisionWithID:1
+//                                  block:^(id response, NSError * error) {
+//                                      NSLog(@"ERROR: %@", error);
+//                                  }];
+    
     
     IDHTTPRequest * request = [IDHTTPRequest new];
     [request logoutBlock:^(id response, NSError * error) {

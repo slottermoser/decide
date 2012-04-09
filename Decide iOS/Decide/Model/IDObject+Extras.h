@@ -11,4 +11,6 @@
 
 @interface IDObject (Extras)
 
++ (id)objectWithID:(NSUInteger)objID inContext:(NSManagedObjectContext *)context;
+
 @end

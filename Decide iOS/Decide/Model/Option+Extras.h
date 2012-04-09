@@ -13,4 +13,10 @@
 
 + (Option *)createOptionInContext:(NSManagedObjectContext *)context;
 
++ (Option *)createOptionFromDictionary:(NSDictionary *)dict inContext:(NSManagedObjectContext *)context;
+
+- (void)upvote;
+
+- (void)downvote;
+
 @end

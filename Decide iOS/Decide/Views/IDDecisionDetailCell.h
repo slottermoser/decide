@@ -23,4 +23,6 @@
 
 - (void)setTextFieldDelegate:(id<UITextFieldDelegate>)delegate;
 
+- (void)update;
+
 @end

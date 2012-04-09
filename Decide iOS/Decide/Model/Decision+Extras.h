@@ -13,4 +13,6 @@
 
 + (Decision *)createDecisionInContext:(NSManagedObjectContext *)context;
 
++ (Decision *)createDecisionFromDictionary:(NSDictionary *)dict inContext:(NSManagedObjectContext *)context;
+
 @end

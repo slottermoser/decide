@@ -12,6 +12,7 @@
 #import "Option+Extras.h"
 #import "IDHTTPRequest.h"
 #import "RBReporter.h"
+#import "UITableView+RBExtras.h"
 
 @interface IDDecisionDetailVC ()
 
@@ -133,7 +134,11 @@
 #pragma mark - UITableViewDataSource methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[self decision] options] count] + 2;
+    
+    if ([self isInEditMode])
+        return [[[self decision] options] count] + 2;
+    else
+        return [[[self decision] options] count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -173,6 +178,35 @@
     [cell setTextFieldDelegate:self];
     
     return cell;
+}
+
+
+#pragma mark - UITableViewDelegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    IDDecisionDetailCell * cell = (IDDecisionDetailCell *)[tableView cellForRowAtIndexPath:indexPath];
+    
+    Option * option = [cell option];
+    
+    if (option) {
+        
+        if ([[option voted] boolValue]) {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+            [option downvote];
+        }
+        else {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+            [option upvote];
+        }
+        
+        NSError * error = nil;
+        if ([[option managedObjectContext] save:&error])
+            [RBReporter logError:error];
+        
+        [cell update];
+    }
+    
+    [[self tableView] deselectSelectedRowAnimated:YES];
 }
 
 

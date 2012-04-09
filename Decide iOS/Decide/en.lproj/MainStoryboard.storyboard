@@ -147,6 +147,7 @@
                     <connections>
                         <outlet property="addButton" destination="7G6-Ur-d4L" id="aOd-QA-Vof"/>
                         <outlet property="logoutButton" destination="d4j-ta-xxZ" id="Qqc-VJ-FmG"/>
+                        <outlet property="tableView" destination="B69-Ve-hXn" id="NIA-ws-mr9"/>
                     </connections>
                 </viewController>
             </objects>
@@ -291,6 +292,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="exQ-Ak-Af6" id="gZc-c7-va9"/>
+                                    <outlet property="delegate" destination="exQ-Ak-Af6" id="ixs-WP-foG"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -413,6 +415,8 @@
         <class className="IDDecisionDetailVC" superclassName="IDBaseVC">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IDDecisionDetailVC.h"/>
             <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
                 <relationship kind="outlet" name="discussionButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
@@ -422,6 +426,7 @@
             <relationships>
                 <relationship kind="outlet" name="addButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="logoutButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="IDLoginVC" superclassName="IDBaseVC">

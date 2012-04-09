@@ -37,37 +37,59 @@
 - (void)setupWithDecision:(Decision *)decision editMode:(BOOL)editMode {
     [self setDecision:decision];
     [self setOption:nil];
-    [self setupWithMainText:@"Decision"
-                 detailText:[decision text]
-                  rightText:nil 
-                   editMode:editMode];
+    [self setEditMode:editMode];
+    [self update];
 }
 
 - (void)setupWithOption:(Option *)option editMode:(BOOL)editMode {
     [self setOption:option];
     [self setDecision:nil];
-    [self setupWithMainText:@"Option"
-                 detailText:[option text] 
-                  rightText:[NSString stringWithFormat:@"%d", [[option voteCount] integerValue]]
-                   editMode:editMode];
+    [self setEditMode:editMode];
+    [self update];
 }
 
-- (void)setupWithMainText:(NSString *)mainText detailText:(NSString *)detailText rightText:(NSString *)rightText editMode:(BOOL)editMode {
+- (void)setupWithMainText:(NSString *)mainText detailText:(NSString *)detailText rightText:(NSString *)rightText {
     
-    [self setEditMode:editMode];
+    BOOL editMode = [self isInEditMode];
+    
     [[self detailLabel] setHidden:(editMode)];
     [[self textField] setHidden:(!editMode)];
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     if (editMode)
         [[self textField] setText:detailText];
     else {
         [[self detailLabel] setText:detailText];
         [[self rightLabel] setText:rightText];
+        
+        Option * option = [self option];
+        
+        if (option) {
+            [self setSelectionStyle:UITableViewCellSelectionStyleBlue];
+            
+            if ([[option voted] boolValue])
+                [self setAccessoryType:UITableViewCellAccessoryCheckmark];
+            else 
+                [self setAccessoryType:UITableViewCellAccessoryNone];
+        }
     }
 }
 
 - (void)setTextFieldDelegate:(id<UITextFieldDelegate>)delegate {
     [[self textField] setDelegate:delegate];
+}
+
+- (void)update {
+    if ([self option]) {
+        [self setupWithMainText:@"Option"
+                     detailText:[[self option] text] 
+                      rightText:[NSString stringWithFormat:@"%d", [[[self option] voteCount] integerValue]]];
+    }
+    else if ([self decision]) {
+        [self setupWithMainText:@"Decision"
+                     detailText:[[self decision] text]
+                      rightText:nil];
+    }
 }
 
 @end

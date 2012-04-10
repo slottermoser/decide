@@ -121,6 +121,8 @@ GEM
       builder (>= 2.1.2)
       jwt (>= 0.1.2)
       multi_json (>= 1.0.3)
+    typhoeus (0.3.3)
+      mime-types
     tzinfo (0.3.32)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
@@ -141,4 +143,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   twilio-ruby
+  typhoeus
   uglifier (>= 1.0.3)

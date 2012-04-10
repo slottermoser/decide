@@ -1,18 +1,9 @@
-
-
-
 // import original bootstrap
 @import "bootstrap";
 @import "responsive";
 
-.control-label {
-  
-}
-
 body {
-    padding-top: 60px;
-    padding-bottom: 40px;
-    background-image: url(/assets/grid-18px-masked.png);
-    background-repeat: repeat-x;
+    background-image:url(http://subtlepatterns.com/patterns/wood_pattern.png);
+    background-repeat: repeat;
     background-position: 0 40px;
 }

@@ -35,4 +35,24 @@ io.sockets.on('connection', function (socket) {
 			});
 		});
 	});
+	socket.on('new participant', function(data){
+		socket.get('id', function(err, id){
+			io.sockets.clients().forEach(function(sock){
+				sock.get('id', function(err, sockID){
+					if(sock != socket && id == sockID)
+						sock.emit('new participant', data);
+				});
+			});
+		});
+	});
+	socket.on('new choice', function(data){
+		socket.get('id', function(err, id){
+			io.sockets.clients().forEach(function(sock){
+				sock.get('id', function(err, sockID){
+					if(sock != socket && id == sockID)
+						sock.emit('new choice', data);
+				});
+			});
+		});
+	});
 });

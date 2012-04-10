@@ -1,27 +1,51 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "form-horizontal"}) do |f| %>
+  <fieldset>
+  <legend>Edit <%= resource_name.to_s.humanize %></legend>
   <%= devise_error_messages! %>
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name, :class => "input-xlarge" , :placeholder => "Joe Schmoe" %>
+    </div>
+  </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-  
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name %></div>
-  
-  <div><%= f.label :phone_number %><br />
-  <%= f.text_field :phone_number %></div>
+  <div class="control-group">
+    <%= f.label :email, :class => "control-label" %>
+    <div class="controls">
+      <%= f.email_field :email, :class => "input-xlarge" , :placeholder => "me@example.com" %>
+    </div>
+  </div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+  <div class="control-group">
+    <%= f.label :phone_number, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :phone_number, :class => "input-xlarge" , :placeholder => "(801) 335-3535" %>
+    </div>
+  </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div class="control-group">
+    <%= f.label :password, :class => "control-label" %>
+    <div class="controls">
+      <%= f.password_field :password, :class => "input-xlarge" , :placeholder => "Top Secret Password" %>
+    </div>
+  </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+  <div class="control-group">
+    <%= f.label :password_confirmation, :class => "control-label"%>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :class => "input-xlarge" , :placeholder => "Top Secret Password Confirmed" %>
+    </div>
+  </div>
 
-  <div><%= f.submit "Update", :class => "btn" %></div>
+  <div class="control-group">
+    <%= f.label :current_password, :class => "control-label" %>
+    <div class="controls">
+      <%= f.password_field :current_password, :class => "input-xlarge" , :placeholder => "Ye Olde Top Secret Password" %>
+    </div>
+  </div>
+
+  <div class="form-actions"><%= f.submit "Update", :class => "btn btn-primary" %></div>
+  </fieldset>
 <% end %>
 
 <h3>Cancel my account</h3>

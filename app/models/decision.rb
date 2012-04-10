@@ -49,8 +49,10 @@ class Decision < ActiveRecord::Base
   end
 
   def as_json(options)
-    votes, user_votes = self.votes(options[:user_id])
-    cu = User.find(options[:user_id])
+    if options[:user_id]
+      votes, user_votes = self.votes(options[:user_id])
+      cu = User.find(options[:user_id])
+    end
   	base_json = super(:only => [:id, :title, :updated_at, :user_id])
   	base_json[:choices] = self.choices_as_json
     base_json[:votes] = votes

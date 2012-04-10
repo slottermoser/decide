@@ -16,12 +16,16 @@ class DecisionsController < ApplicationController
   # GET /decisions.json
   def index
     @decisions = current_user.created_decisions
+    base_json = []
+    current_user.created_decisions.each do |d|
+      base_json << d.as_json({:user_id => current_user.id})
+    end
     @participating = current_user.participating_decisions
     @all_decisions = current_user.otherDecisions
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @decisions }
+      format.json { render json: base_json }
     end
   end
 
@@ -103,7 +107,11 @@ class DecisionsController < ApplicationController
   end
   
   def participating
-    render json: current_user.participating_decisions
+    base_json = []
+    current_user.participating_decisions.each do |d|
+      base_json << d.as_json({:user_id => current_user.id})
+    end
+    render json: base_json
   end
 
   # PUT /decisions/1

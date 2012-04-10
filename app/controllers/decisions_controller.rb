@@ -17,6 +17,7 @@ class DecisionsController < ApplicationController
   def index
     @decisions = current_user.created_decisions
     @participating = current_user.participating_decisions
+    @all_decisions = current_user.otherDecisions
 
     respond_to do |format|
       format.html # index.html.erb
@@ -89,7 +90,8 @@ class DecisionsController < ApplicationController
 
         discussion = Discussion.new
         @decision.discussion = discussion
-        @decision.participants = User.all
+        @decision.participants << @decision.creator
+        @decision.save
         discussion.save
         format.html { redirect_to @decision, notice: 'Decision was successfully created.' }
         format.json { render json: @decision, status: :created, location: @decision }

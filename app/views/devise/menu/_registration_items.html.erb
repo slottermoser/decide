@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
-  <li>
-  <%= link_to('Edit registration', edit_user_registration_path) %>
-  </li>
+  <p class="navbar-text pull-right">
+  	Logged in as <%= link_to(current_user.name, edit_user_registration_path) %>
+  </p>
 <% else %>
-  <li>
+  <p class="navbar-text register pull-right">
   <%= link_to('Register', new_user_registration_path)  %>
-  </li>
+  </p>
 <% end %>

@@ -3,9 +3,7 @@ module ApplicationHelper
 	def renderNavItems(activePage)
 		htmlString = ""
 		navigationItems = {
-			"Home" => "/",
 			"Decisions" => "/decisions",
-			"About" => "/about",
 			"Contact" => "/contact"
 		}
 		navigationItems.each do |item, route|

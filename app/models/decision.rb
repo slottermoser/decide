@@ -40,14 +40,25 @@ class Decision < ActiveRecord::Base
     return votes, user_votes
   end
 
+  def participant_ids
+    ids = []
+    self.participants.each do |p|
+      ids << p.id
+    end
+    return ids
+  end
+
   def as_json(options)
     votes, user_votes = self.votes(options[:user_id])
+    cu = User.find(options[:user_id])
   	base_json = super(:only => [:id, :title, :updated_at, :user_id])
   	base_json[:choices] = self.choices_as_json
     base_json[:votes] = votes
     base_json[:my_votes] = user_votes
     base_json[:voter_count] = self.participants.count
     base_json[:my_id] = options[:user_id]
+    base_json[:me] = {:user_id => cu.id, :name => cu.name, :email => cu.email}
+    base_json[:participants] = self.participant_ids
   	return base_json
   end
 end

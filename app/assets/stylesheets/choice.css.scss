@@ -5,3 +5,20 @@
 #decision-choices {
 	margin-bottom: 30px;
 }
+
+#add-choice {
+	padding-top: 25px;
+	padding-left: 20px;
+
+	#add-choice-button {
+		margin-right: 15px;
+	}
+
+	#add-choice-form-container {
+		display:inline-block;
+
+		#new-choice-submit {
+			margin-left:10px;
+		}
+	}
+}

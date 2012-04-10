@@ -18,6 +18,11 @@ class VoteController < ApplicationController
     @vote.voter = current_user
 
     if @vote.save
+      # this voter is now a permanent participant
+      unless current_user.participating_decisions.include? @choice.decision
+        current_user.participating_decisions << @choice.decision
+        current_user.save
+      end
       @choice.vote_count += 1
       @choice.save
       render :json => {vote: @vote, status: "success"}, status: :created

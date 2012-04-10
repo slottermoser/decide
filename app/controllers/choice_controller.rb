@@ -34,7 +34,12 @@ class ChoiceController < ApplicationController
 
     respond_to do |format|
       if @choice.save
-        format.json { render json: @choice, status: :created, location: @choice }
+        # this choice maker is now a permanent participant
+        unless current_user.participating_decisions.include? @choice.decision
+          current_user.participating_decisions << @choice.decision
+          current_user.save
+        end
+        format.json { render json: @choice, status: :created }
       else
         format.json { render json: @choice.errors, status: :unprocessable_entity }
       end

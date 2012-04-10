@@ -1,7 +1,10 @@
-<h2>Choices</h2>
-
 <div class="row-fluid" id="decision-choices">
-    <div id="voting-booth" style="width: 700px;"></div>
+    <h2>Choices</h2>
+    <div id="voting-booth"></div>
+    <div id="add-choice">
+        <button id="add-choice-button" class="btn btn-primary">Add a Choice</button>
+        <div id="add-choice-form-container"></div>
+    </div>
     <script type="text/javascript">
         decision = new Decision(<%= @decision.as_json({:user_id => @my_id}).to_json.html_safe %>)
         decision.build_graph();
@@ -9,10 +12,9 @@
         $(document).ready(function() {
             decision.graph();
 
-            $(".vote-button").each(function(index) {
-                $(this).bind('click', function() {
-                    decision.vote(this);
-                });
+            $("#add-choice-button").click(function() {
+                var choiceForm = new ChoiceForm(decision.decision_id);
+                choiceForm.build_form();
             });
         });
     </script>

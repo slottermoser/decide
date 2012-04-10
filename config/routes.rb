@@ -2,6 +2,8 @@ Decide::Application.routes.draw do
 
   match 'twilio/event' => 'twilio#event', :method => 'post'
   
+  match 'decisions/participating' => 'decisions#participating', :method => 'get'
+  
   match 'decisions/:decision_id/discussion.json' => 'discussion#show', :method => 'get'
   match 'decisions/:decision_id/choices/new' => 'choice#new', :method => 'post'
   post "choice/create"

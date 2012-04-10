@@ -99,6 +99,10 @@ class DecisionsController < ApplicationController
       end
     end
   end
+  
+  def participating
+    render json: current_user.participating_decisions
+  end
 
   # PUT /decisions/1
   # PUT /decisions/1.json

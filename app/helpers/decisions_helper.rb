@@ -4,7 +4,7 @@ module DecisionsHelper
     base_parts = base[6...-1].rpartition(':')
     # Check to see if we're running on a port other than 80
     if base_parts[1] == ":"
-      base = base_parts[0]
+      base = base.rpartition(':')[0]
     end
     return base << ":8080"
   end

@@ -5,6 +5,7 @@ class Choice < ActiveRecord::Base
 
   before_save :ensure_creator
   before_save :set_default_vote_count
+  before_save :ensure_title
 
   def voted_by_me(my_id)
     vote = Vote.find_by_voter_and_choice_id(my_id, self.id)
@@ -20,6 +21,14 @@ class Choice < ActiveRecord::Base
     def ensure_creator
       if self.creator.nil?
         self.creator = self.decision.creator
+      end
+    end
+
+    def ensure_title
+      if self.title.nil?
+        return false
+      else
+        return true
       end
     end
 

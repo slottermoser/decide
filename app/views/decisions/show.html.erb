@@ -1,24 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Info</h2>
-<div class="row question-info">
-	<div class="span12 item">
-	  <span class="description">Question:</span>
-	  <span class="value"><%= @decision.title %></span>
-	</div>
-	
-	<div class="span12 item">
-	  <span class="description">Asked By:</span>
-	  <span class="value"><%= @decision.creator.name %></span>
-	</div>
+<div class="row">
+  <div class="span5 decision-title-block">
+    <h2><%= @decision.creator.name %>:</h2>
+    <div class="decision-title well">
+    	<div class="pull-right decision-edit"><%= link_to 'Edit', edit_decision_path(@decision) if current_user.id == @decision.creator.id %></div>
+    	<%= @decision.title %>
+    </div>
+    <!-- <div>
+  	  TODO: Timer - 3 hours 23 minuts 17 seconds
+    </div> -->
+  </div>
+  <div class="span7">
+	<%= render 'choice/show' %>
+  </div>
+</div>
+<div class="row">
+  <div class="span12 discussion-block">
+	<%= render 'discussion/show_inline' %>
+  </div>
 </div>
 
-<%= render 'choice/show' %>
-
-<%= render 'discussion/show_inline' %>
-
-<%= link_to 'Edit', edit_decision_path(@decision) %> |
-<%= link_to 'Back', decisions_path %>
+<div class="row">
+	<div class="span12">
+	  <h2 style="padding-top:30px">Participants: <span id="participant-count"><%= @decision.participants.count %></span></h2>
+	  <div id="participant-list">
+	  <% @decision.participants.all.each do |p| %>
+	  <div class="item">
+	  	<strong><%= p.name %>:</strong> <%= p.email %>
+	  </div>
+	  <% end %>
+	  </div>
+	</div>
+</div>
 
   <script type="text/javascript">
   	socket = io.connect('<%= event_server_url(root_url) %>');
@@ -34,20 +48,15 @@
 	    });
 	    socket.on('new choice', function (data) {
 	   	  // console.log(data);
+	   	  decision.addChoice(data)
 	    });
 	    socket.on('vote change', function (data) {
 	   	  // console.log(data);
 	   	  decision.voteChange(data);
 	    });
+	    socket.on('new participant', function (data) {
+	   	  console.log(data);
+	   	  decision.newParticipant(data);
+	    });
 	  });
   </script>
-
-<h2 style="padding-top:30px">Participants: <%= @decision.participants.count %></h2>
-<div class="row question-info">
-<% @decision.participants.all.each do |p| %>
-	<div class="span12 item">
-	  <span class="description"><%= p.name %></span>
-	  <span class="value"><%= p.email %></span>
-	</div>
-<% end %>
-</div>

@@ -5,14 +5,16 @@
 class Decision
   constructor:(info) ->
     @info = info
+    @decision_id = @info.id
     @title = @info.title
-    @creator = @info.creator
+    @me = @info.me
     @choices = []
     @choices.push(new Choice(choice_info)) for choice_info in @info.choices
     @my_votes = info.my_votes
     @votes = info.votes
     @voter_count = info.voter_count
     @my_id = info.my_id
+    @participants = info.participants
 
   graph:() ->
     voteButtons = $(".vote-button")
@@ -34,9 +36,13 @@ class Decision
 
   build_graph:() ->
     booth = $("#voting-booth")
+    booth.html("")
     vButtons = @build_vote_buttons()
     booth.append(@build_vote_buttons())
     booth.append(@build_graph_area())
+    $(".vote-button").each (index) ->
+      $(this).bind 'click', () ->
+        decision.vote(this)
 
   build_vote_buttons:() ->
     container = $('<div class="vote-buttons">')
@@ -58,6 +64,7 @@ class Decision
       @votes[choiceId]++
       $.post '/choices/' + choiceId + '/vote.json', (data) =>
         if data.status is 'success'
+          @checkIfNewParticipant()
           vote_info = {}
           vote_info["voter_id"] = @my_id
           vote_info["choice_id"] = choiceId
@@ -71,6 +78,7 @@ class Decision
       @votes[choiceId]--
       $.post '/choices/' + choiceId + '/delete_vote.json', (data) =>
         if data.status is 'success'
+          @checkIfNewParticipant()
           vote_info = {}
           vote_info["voter_id"] = @my_id
           vote_info["choice_id"] = choiceId
@@ -88,6 +96,35 @@ class Decision
       else
         @my_votes[vote_info.choice_id] = false
     @votes[vote_info.choice_id] += vote_info.vote
+    @graph()
+
+  checkIfNewParticipant:() ->
+    if ($.inArray(@my_id, @participants) < 0)
+      @participants.push(@my_id)
+      new_p_info = {}
+      new_p_info["id"] = @my_id
+      new_p_info["name"] = @me.name
+      new_p_info["email"] = @me.email
+      socket.emit('new participant', new_p_info)
+      @newParticipant(new_p_info)
+
+  newParticipant:(p_info) ->
+    @participants.push(p_info.id)
+    newParticipant = $('<div class="item">')
+    strong = $('<strong>')
+    strong.text(p_info.name + ":")
+    newParticipant.append(strong)
+    newParticipant.append(" " + p_info.email)
+    $("#participant-list").append(newParticipant)
+    $("#participant-count").text(1 + parseInt($("#participant-count").text()))
+    @voter_count++
+    @graph()
+
+  addChoice:(choice_info) ->
+    choice = new Choice(choice_info)
+    @choices.push(choice)
+    @votes[choice.c_id] = choice.vote_count
+    @build_graph()
     @graph()
 
 class Choice
@@ -115,5 +152,25 @@ class Choice
     container.append(textContainer)
     return container
 
+class ChoiceForm
+  constructor:(decision_id) ->
+    @decision_id = decision_id
+
+  build_form:() ->
+    container = $('<form action="/" id="new-choice-form" onsubmit="return false;" class="form-inline">')
+    container.append($('<input id="new-choice-desc" type="text" name="choice[title]" class="input" placeholder="Description">'))
+    container.append($('<input type="hidden" name="choice[decision_id]" value="' + @decision_id + '">'))
+    container.append($('<button id="new-choice-submit" type="submit" class="btn btn-success">Add</button>'))
+    $("#add-choice-form-container").html(container)
+    $("#new-choice-desc").focus()
+    decision_id = @decision_id
+    $("#new-choice-form").submit () ->
+      @choice_info = $("#new-choice-form").serialize()
+      $.post "/choice/create", @choice_info, (data) ->
+        decision.addChoice(data) #dangerously assuming this is defined...
+        $("#add-choice-form-container").html("New Choice Added: " + data.title)
+        socket.emit('new choice', data)
+
 window.Decision = Decision
 window.Choice = Choice
+window.ChoiceForm = ChoiceForm

@@ -2,6 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.decision-title {
+    line-height: 36px;
+    font-weight: 300;
+    font-size: 22px;
+    padding-left: 15px;
+}
+
+.decision-edit {
+    line-height: 12px;
+    font-weight: 300;
+    font-size: 12px;
+    padding: 0px;
+    position:relative;
+    top:-10px;
+    right:-10px;
+}
+
+.discussion-block {
+    padding-top: 30px;
+}
+
 label {
   font-size: 11pt;
 }
@@ -21,7 +42,7 @@ label {
 }
 
 #votes-graph-area {
-    width:400px;
+    width:450px;
     position: relative;
     display: inline-block;
     margin-right: 10px;

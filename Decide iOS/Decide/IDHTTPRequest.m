@@ -165,6 +165,30 @@ const NSInteger IDHTTPRequestUnknownErrorCode = 999;
     }];
 }
 
+- (void)participatingDecisionsWithBlock:(IDHTTPRequestBlock)block {
+    
+    NSParameterAssert(block);
+    
+    NSMutableURLRequest * request = [self mutableURLRequestWithPath:@"/decisions/participating.json"
+                                                             method:@"GET" 
+                                                           jsonBody:@""];
+    [self performRequest:request block:^(id response, NSError * error) {
+        
+        if (error) {
+            block(nil, error);
+        }
+        else {
+            NSMutableArray * decisions = [NSMutableArray arrayWithCapacity:[response count]];
+            NSManagedObjectContext * moc = [[RBCoreDataManager defaultManager] createMOC];
+            
+            for (NSDictionary * decision in response)
+                [decisions addObject:[Decision createDecisionFromDictionary:decision
+                                                                  inContext:moc]];
+            block(decisions, nil);
+        }
+    }];
+}
+
 
 #pragma mark - Options
 

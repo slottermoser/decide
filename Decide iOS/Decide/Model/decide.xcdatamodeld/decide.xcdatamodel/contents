@@ -5,7 +5,7 @@
         <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="discussion" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Discussion" inverseName="decision" inverseEntity="Discussion" syncable="YES"/>
         <relationship name="options" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Option" inverseName="decision" inverseEntity="Option" syncable="YES"/>
-        <relationship name="user" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="decisions" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="decisions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Discussion" representedClassName="Discussion" parentEntity="IDObject" syncable="YES">
         <relationship name="decision" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Decision" inverseName="discussion" inverseEntity="Decision" syncable="YES"/>

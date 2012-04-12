@@ -38,8 +38,8 @@
         [opt setDecision:decision];
 
         // Handles the case when I have voted for something. 
-        NSString * keypath = [NSString stringWithFormat:@"my_votes.%@", [opt objID]];
-        [opt setVoted:[dict valueForKeyPath:keypath]];
+//        NSString * keypath = [NSString stringWithFormat:@"my_votes.%@", [opt objID]];
+//        [opt setVoted:[dict valueForKeyPath:keypath]];
     }
     
     return decision;

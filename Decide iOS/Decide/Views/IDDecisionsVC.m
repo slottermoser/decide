@@ -14,6 +14,15 @@
 #import "RBReporter.h"
 #import "IDLoginManager.h"
 #import "IDHTTPRequest.h"
+#import "UITableView+RBExtras.h"
+
+
+enum IDDecisionsVCSection {
+    IDDecisionsVCDecisionSection = 0,
+    IDDecisionsVCParticipatingDecisionSection,
+    IDDecisionsVCSectionCount,
+};
+
 
 @interface IDDecisionsVC ()
 
@@ -21,19 +30,24 @@
 @property (nonatomic, strong) IBOutlet UIBarButtonItem * addButton;
 @property (nonatomic, strong) IBOutlet UITableView * tableView;
 @property (nonatomic, copy) NSArray * decisions;
+@property (nonatomic, copy) NSArray * participatingDecisions;
 
 @end
 
 
 @implementation IDDecisionsVC
 
-@synthesize logoutButton = _logoutButton;
-@synthesize addButton    = _addButton;
-@synthesize tableView    = _tableView;
-@synthesize decisions    = _decisions;
+@synthesize logoutButton           = _logoutButton;
+@synthesize addButton              = _addButton;
+@synthesize tableView              = _tableView;
+@synthesize decisions              = _decisions;
+@synthesize participatingDecisions = _participatingDecisions;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setDecisions:[NSArray array]];
+    [self setParticipatingDecisions:[NSArray array]];
     
     User * user = [[IDLoginManager defaultManager] currentUser];
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:NSStringFromClass([Decision class])];
@@ -75,6 +89,35 @@
             [[self tableView] reloadData];
         }
     }];
+    
+    [[IDHTTPRequest new] participatingDecisionsWithBlock:^(id response, NSError * error) {
+        
+        if (error) {
+            [RBReporter logError:error];
+        }
+        else {
+            
+            if ([response count] == 0)
+                return;
+            
+            NSManagedObjectContext * moc = [[response objectAtIndex:0] managedObjectContext];
+            
+            if (![moc save:&error]) {
+                [RBReporter logError:error];
+                return;
+            }
+            
+            // Grabs all the decisions from the server. 
+            NSMutableArray * newDecisions = [NSMutableArray arrayWithCapacity:[response count]];
+            
+            // Loads the Decisions into this view's MOC.
+            for (Decision * decision in response)
+                [newDecisions addObject:[decision loadIntoMOC:[self moc]]];
+            
+            [self setParticipatingDecisions:newDecisions];
+            [[self tableView] reloadData];
+        }
+    }];
 }
 
 - (void)viewDidUnload {
@@ -83,22 +126,14 @@
     [super viewDidUnload];
 }
 
-- (IBAction)logout:(id)sender {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[self tableView] deselectSelectedRowAnimated:YES];
+}
 
-//    [[IDHTTPRequest new] upvoteOptionWithID:2 block:^(id response, NSError * error) {
-//        NSLog(@"ERROR: %@", error);
-//    }];
-    
-    
-    
-//    [[IDHTTPRequest new] decisionWithID:1
-//                                  block:^(id response, NSError * error) {
-//                                      NSLog(@"ERROR: %@", error);
-//                                  }];
-    
-    
-    IDHTTPRequest * request = [IDHTTPRequest new];
-    [request logoutBlock:^(id response, NSError * error) {
+- (IBAction)logout:(id)sender {
+    [[IDHTTPRequest new] logoutBlock:^(id response, NSError * error) {
         // Pops the view regardless of the result of the logout, for simplicity.
         [[self navigationController] popViewControllerAnimated:YES];
     }];
@@ -130,15 +165,49 @@
 
 #pragma mark - UITableViewDataSource methods
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if (section == IDDecisionsVCDecisionSection)
+        return @"Decisions";
+    else if (section == IDDecisionsVCParticipatingDecisionSection)
+        return @"Participating Decisions";
+    
+    return nil;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return IDDecisionsVCSectionCount;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[self decisions] count];
+    
+    if (section == IDDecisionsVCDecisionSection)
+        return [[self decisions] count];
+    else if (section == IDDecisionsVCParticipatingDecisionSection)
+        return [[self participatingDecisions] count];
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Decision * decision = [[self decisions] objectAtIndex:indexPath.row];
-    
     IDDecisionCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([IDDecisionCell class])];
+    Decision * decision = nil;
+    
+    switch (indexPath.section) {
+            
+        case IDDecisionsVCDecisionSection:
+            decision = [[self decisions] objectAtIndex:indexPath.row];
+            break;
+            
+        case IDDecisionsVCParticipatingDecisionSection:
+            decision = [[self participatingDecisions] objectAtIndex:indexPath.row];
+            break;
+            
+        default:
+            break;
+    }
+    
     [cell setupWithDecision:decision];
     
     return cell;

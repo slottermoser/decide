@@ -25,6 +25,8 @@ typedef void(^IDHTTPRequestBlock)(id response, NSError * error);
 
 - (void)decisionsWithBlock:(IDHTTPRequestBlock)block;
 
+- (void)participatingDecisionsWithBlock:(IDHTTPRequestBlock)block;
+
 - (void)createOption:(Option *)option block:(IDHTTPRequestBlock)block;
 
 - (void)optionWithID:(NSUInteger)objID inDecision:(Decision *)decision block:(IDHTTPRequestBlock)block;

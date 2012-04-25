@@ -13,12 +13,12 @@
  *= require_tree .
 */
 
-.container {
+/*.container {
 	width:940px;
 }
-
+*/
 #container {
-  width: 940px;
+  /*width: 940px;*/
   margin: 30px auto;
   padding: 30px;
   background: white;

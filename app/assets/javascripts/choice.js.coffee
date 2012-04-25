@@ -51,7 +51,7 @@ class Decision
     return container
 
   build_graph_area:() ->
-    container = $('<div id="votes-graph-area" class="span10">')
+    container = $('<div id="votes-graph-area" class="span5">')
     container.append($('<div class="graph-top">'))
     container.append(choice.build_bar()) for choice in @choices
     container.append($('<div class="graph-bottom">'))

@@ -9,7 +9,8 @@ gem 'mysql2'
 gem 'devise'
 gem 'twilio-ruby'
 gem 'typhoeus'
-
+gem 'ruby-gmail'
+gem 'rufus-scheduler'
 
 # Gems used only for assets and not required
 # in production environments by default.

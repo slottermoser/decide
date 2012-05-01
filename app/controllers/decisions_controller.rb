@@ -63,13 +63,20 @@ class DecisionsController < ApplicationController
   # POST /decisions.json
   def create
     @decision = Decision.new(params[:decision])
-    logger.info "----------------"
-    logger.info params
-    logger.info "----------------"
+#    logger.info "----------------"
+#    logger.info params
+#    logger.info "----------------"
     @decision.creator = current_user
 
     respond_to do |format|
       if @decision.save
+        #save deadline check
+        unless @decision.deadline.nil?
+          check = @decision.build_deadline_check
+          check.deadline = @decision.deadline
+          check.save
+		end
+
         #save choices
         if params[:choice1] && params[:choice1] != ""
           choice1 = @decision.choices.build

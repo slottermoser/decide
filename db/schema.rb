@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402205516) do
+ActiveRecord::Schema.define(:version => 20120430035615) do
 
   create_table "choices", :force => true do |t|
     t.string   "title"
@@ -22,11 +22,19 @@ ActiveRecord::Schema.define(:version => 20120402205516) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "deadline_checks", :force => true do |t|
+    t.datetime "deadline"
+    t.integer  "decision_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "decisions", :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.datetime "deadline"
   end
 
   create_table "decisions_participants", :id => false, :force => true do |t|

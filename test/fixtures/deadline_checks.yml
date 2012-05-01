@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  deadline: 2012-04-30 03:56:15
+  decision_id: 
+
+two:
+  deadline: 2012-04-30 03:56:15
+  decision_id: 

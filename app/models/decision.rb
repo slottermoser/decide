@@ -3,6 +3,7 @@ class Decision < ActiveRecord::Base
   has_and_belongs_to_many :participants, :class_name => "User", :join_table => "decisions_participants"
   belongs_to :creator, :class_name => "User", :foreign_key => "user_id"
   has_many :choices
+  has_one :deadline_check
 
   def choices_as_json
   	choices = []
@@ -38,6 +39,21 @@ class Decision < ActiveRecord::Base
       i += 1
     end
     return votes, user_votes
+  end
+
+  def top_choices
+    return nil if self.choices.nil?
+    top = []
+    self.choices.each do |c|
+      if top.empty?
+        top << c
+      elsif c.vote_count == top[0].vote_count
+        top << c
+      elsif c.vote_count > top[0].vote_count
+        top = [c]
+      end
+    end
+    return top
   end
 
   def participant_ids

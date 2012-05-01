@@ -14,6 +14,8 @@
   <div class="well">
     <%= f.label "The question", :class => 'control-label' %>
     <div class="controls"><%= f.text_field :title, :class => "input-xlarge" %></div>
+    <%= f.label "The deadline", :class => 'control-label' %>
+    <div class="controls"><%= f.datetime_select :deadline, :class => "input-xlarge", :prompt => true, :ampm => true, :order => [:month, :day, :year], :start_year => Time.now.year%></div>
     <%= f.label "Choice 1", :class => 'control-label' %>
     <div class="controls"><input name="choice1" class="input-xlarge"></div>
     <%= f.label "Choice 2", :class => 'control-label' %>

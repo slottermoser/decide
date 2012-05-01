@@ -1,3 +1,5 @@
+<%= javascript_include_tag "javascript_countdown" %>
+
 <p id="notice"><%= notice %></p>
 
 <div class="row">
@@ -6,10 +8,14 @@
     <div class="decision-title well">
     	<div class="pull-right decision-edit"><%= link_to 'Edit', edit_decision_path(@decision) if current_user.id == @decision.creator.id %></div>
     	<%= @decision.title %>
+		<% unless @decision.deadline.nil? %>
+		<div alt="Deadline:" id="countdown_timer" style="padding-top:20px; font-family: Courier New;font-size:30px; text-align:center;"></div>
+		<div style="font-size:12px; text-align:center; line-height:12px;">(<%= @decision.deadline.strftime("%B %-d, %Y %-I:%M %P") %>)</div>
+		<script type="text/javascript">
+			javascript_countdown.init(<%= (@decision.deadline - DateTime.now).floor %>, 'countdown_timer');
+		</script>
+		<% end %>
     </div>
-    <!-- <div>
-  	  TODO: Timer - 3 hours 23 minuts 17 seconds
-    </div> -->
   </div>
   <div class="span7">
 	<%= render 'choice/show' %>

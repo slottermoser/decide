@@ -5,7 +5,6 @@ io.sockets.on('connection', function (socket) {
 		socket.set('id', data.id, function(){});
 	});
 	socket.on('vote change', function (data) {
-		console.log("hello")
 		socket.get('id', function(err, id){
 			io.sockets.clients().forEach(function(sock){
 				sock.get('id', function(err, sockID){

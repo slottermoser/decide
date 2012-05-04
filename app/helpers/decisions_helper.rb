@@ -6,6 +6,7 @@ module DecisionsHelper
     if base_parts[1] == ":"
       base = base.rpartition(':')[0]
     end
+    base = base.sub("s","") if base[4] == "s"
     return base << ":8080"
   end
 end

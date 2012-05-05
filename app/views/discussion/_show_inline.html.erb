@@ -11,7 +11,10 @@
 	$("#page_discussion").append(discussion.build());
 	$("#new_thread").click(function(evt){
 		evt.stopPropagation();
-		var well = $('<div class="well">');
+		if($(".comment_input_container")[0]){
+			return;
+		}
+		var well = $('<div class="well comment_input_container">');
 		well.hide();
 		var comment_input = $('<textarea class="comment_input">');
 		well.append(comment_input);
@@ -35,7 +38,9 @@
  		$("#page_discussion").append(well);
 		comment_input.focus();
 		$(document).click(function(e){
-			well.fadeOut('slow',function(){});
+			well.fadeOut('slow',function(){
+				well.remove();
+			});
 		});
 		well.click(function(e){
 			e.stopPropagation();

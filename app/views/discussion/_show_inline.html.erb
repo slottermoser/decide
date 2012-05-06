@@ -9,7 +9,8 @@
 	});
 
 	$("#page_discussion").append(discussion.build());
-	$("#new_thread").click(function(evt){
+	discussion.comment($('#new_thread'),$('#page_discussion'));
+	/*$("#new_thread").click(function(evt){
 		evt.stopPropagation();
 		if($(".comment_input_container")[0]){
 			return;
@@ -46,5 +47,5 @@
 			e.stopPropagation();
 		});
 		well.fadeIn('fast',function(){});
-	});
+	});*/
 </script>

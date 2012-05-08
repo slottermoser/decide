@@ -26,7 +26,6 @@ class Entry
   
   build_entry_container:() ->
     that = this
-    entryId = @id
     @reply_button = $("<button>").attr({
       'class':'btn reply-button',
     }).append("Reply")
@@ -41,41 +40,6 @@ class Entry
     ).append(@reply_button)
     @discussion.comment(@reply_button,@container,true,@id)
     return @entry_container
-    
-  ###
-  reply_dialog:(btn,entryId) ->
-    parent = $('#entry'+entryId).parent()
-    comment = new Comment(btn,parent)
-    comment.build(true)
-    that = this
-    reply_input = $('<textarea>')
-    content = $('<div>').attr({'class':'new_reply'}).append(
-        $('<label>').attr({'for':'reply_value'}).append('Reply:')
-      ).append(reply_input)
-    new ModalWindow(
-      okButtonText:'Save Reply'
-      okCallback:() ->
-        that.add_reply(event, reply_input.val())
-      cancelButtonText:'Cancel'
-      title:"Reply"
-    ).set_content(content).show()
-    ###    
-  ###
-  add_reply:(event, reply_text) ->
-    that = this
-    $.post(
-      '/discussion/add_reply/' + @id, { 
-        text: reply_text
-      },
-      (data) ->
-        if data.status == 'success'
-          that.children.push(new Entry data.entry_info, that.discussion,)
-          socket.emit('new reply', {entry_info: data.entry_info})
-          that.discussion.refresh()
-        else
-          console.error(data.message)
-    )
-  ###  
 
   add_child:(entry_info) ->
     @children.push(new Entry entry_info, @discussion)

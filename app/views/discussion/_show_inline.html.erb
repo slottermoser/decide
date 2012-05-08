@@ -10,42 +10,4 @@
 
 	$("#page_discussion").append(discussion.build());
 	discussion.comment($('#new_thread'),$('#page_discussion'));
-	/*$("#new_thread").click(function(evt){
-		evt.stopPropagation();
-		if($(".comment_input_container")[0]){
-			return;
-		}
-		var well = $('<div class="well comment_input_container">');
-		well.hide();
-		var comment_input = $('<textarea class="comment_input">');
-		well.append(comment_input);
-		var comment_btn = $('<button class="btn">Save</button>');
-		comment_btn.click(function(e){
-			$.post(
-                              '/discussion/new_comment/' + discussion.id, 
-                              {text: comment_input.val()},
-                              function (data) {
-                                if(data.status == 'success')
-                                {
-					well.remove();
-                                        discussion.add_new_entry(data.entry_info)
-                                        socket.emit('new comment', {entry_info: data.entry_info})
-                                }
-                                else
-                                  console.error(data.message)
-                              });
-		});
-		well.append(comment_btn);
- 		$("#page_discussion").append(well);
-		comment_input.focus();
-		$(document).click(function(e){
-			well.fadeOut('slow',function(){
-				well.remove();
-			});
-		});
-		well.click(function(e){
-			e.stopPropagation();
-		});
-		well.fadeIn('fast',function(){});
-	});*/
 </script>

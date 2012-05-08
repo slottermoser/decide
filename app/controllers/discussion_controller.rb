@@ -18,7 +18,7 @@ class DiscussionController < ApplicationController
     new_comment = DiscussionEntry.new({:entry => params["text"]})
     new_comment.discussion = discussion
     new_comment.user = current_user
-    
+
     if new_comment.save
       entry_info = {
         name:new_comment.user.name,

@@ -153,6 +153,7 @@ class Discussion
       well.append(comment_input)
       comment_btn = $('<button class="btn">Save</button>')
       comment_btn.click (e) ->
+        comment_btn.attr('disabled','true')
         text = comment_input.val()
         if reply
           that.add_reply(reply_id,text,well)

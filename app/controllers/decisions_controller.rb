@@ -141,7 +141,13 @@ class DecisionsController < ApplicationController
   # DELETE /decisions/1.json
   def destroy
     @decision = Decision.find(params[:id])
+    @discussion = Discussion.find_by_decision_id(params[:id])
+    @entries = DiscussionEntry.find_all_by_discussion_id(@discussion.id)
     @decision.destroy
+    @discussion.destroy
+    @entries.each do |entry|
+      entry.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to decisions_url }

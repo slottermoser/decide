@@ -2,12 +2,10 @@
 <div id="discussion-header"><h2>Discussion</h2></div>
 
 <div id="page_discussion" class="page_discussion"></div>
-<button class="btn btn-primary" id="new_thread">Comment</button>
 <script>
 	discussion = new Discussion(<%= @discussion.entries_as_json.to_json.html_safe %>,{
 		id:<%= @discussion.id %>
 	});
 
 	$("#page_discussion").append(discussion.build());
-	discussion.comment($('#new_thread'),$('#page_discussion'));
 </script>

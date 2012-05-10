@@ -62,10 +62,12 @@ class DecisionsController < ApplicationController
   # POST /decisions
   # POST /decisions.json
   def create
-    @decision = Decision.new(params[:decision])
-#    logger.info "----------------"
-#    logger.info params
-#    logger.info "----------------"
+	Time.use_zone(params[:decider_timezone]) do
+		@decision = Decision.new(params[:decision])
+	end
+    #logger.info "----------------"
+    #logger.info @decision.deadline.inspect
+    #logger.info "----------------"
     @decision.creator = current_user
 
     respond_to do |format|

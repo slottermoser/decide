@@ -10,9 +10,12 @@
     	<%= @decision.title %>
 		<% unless @decision.deadline.nil? %>
 		<div alt="Deadline:" id="countdown_timer" style="padding-top:20px; font-family: Courier New;font-size:30px; text-align:center;"></div>
-		<div style="font-size:12px; text-align:center; line-height:12px;">(<%= @decision.deadline.strftime("%B %-d, %Y %-I:%M %P") %>)</div>
+		<div id="deadline-display" style="font-size:12px; text-align:center; line-height:12px;"></div>
 		<script type="text/javascript">
 			javascript_countdown.init(<%= (@decision.deadline - DateTime.now).floor %>, 'countdown_timer');
+            var deadlineSecs = <%= @decision.deadline.to_i %>;
+            var deadline = new Date(deadlineSecs * 1000);
+            $("#deadline-display").text("" + deadline);
 		</script>
 		<% end %>
     </div>

@@ -26,7 +26,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'detect_timezone_rails'
 gem 'omniauth-openid'
 
 # To use ActiveModel has_secure_password

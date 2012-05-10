@@ -1,3 +1,9 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#decider_timezone').set_timezone(); 
+  });
+</script>
+
 <%= form_for(@decision) do |f| %>
   <% if @decision.errors.any? %>
     <div id="error_explanation">
@@ -26,6 +32,7 @@
     <div class="controls"><input name="choice4" class="input-xlarge"></div>
     <p>*Feel free to add up to four choices, or start with no choices at all and let your friends decide.<br>
       You and everyone else will be able to add more choices on the next page</p>
+    <%= hidden_field_tag(:decider_timezone, "") %>
   </div>
   <div class="actions">
     <%= f.submit(:class => "btn") %>

@@ -117,8 +117,10 @@ class Discussion
       well.append(comment_input)
       comment_btn = $('<button class="btn">Save</button>')
       comment_btn.click (e) ->
-        comment_btn.attr('disabled','true')
         text = comment_input.val()
+        if text == ''
+          return
+        comment_btn.attr('disabled','true')
         if reply
           that.add_reply(reply_id,text,well)
         else
@@ -131,36 +133,6 @@ class Discussion
         well.fadeOut 'slow', ->
           well.remove()
       well.fadeIn 'fast', ->
+      comment_input.focus()
 
 window.Discussion = Discussion
-
-###
-class Comment
-  constructor: (btn, parent) ->
-    @btn = btn
-    @parent = parent
-
-  comment:(btn,parent,reply = false) ->
-    btn.click (evt) ->
-      evt.stopPropagation()
-      if $('.comment_input_container')[0] 
-        $('.comment_input_container').fadeOut 'fast', ->
-      well = $('<div class="well comment_input_container">')
-      if reply
-        well.addClass('children'); 
-      well.hide()
-      comment_input = $('<textarea class="comment_input">')
-      well.append(comment_input)
-      comment_btn = $('<button class="btn">Save</button>')
-      well.append(comment_btn)
-      parent.append(well)
-      well.click (e) ->
-        e.stopPropagation()
-      $(document).click (e) ->
-        well.fadeOut 'slow', ->
-          well.remove()
-      well.fadeIn 'fast', ->
-
-
-window.Comment = Comment
-###

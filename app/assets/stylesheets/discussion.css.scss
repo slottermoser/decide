@@ -12,7 +12,13 @@
     padding-left:20px;
     border-left: 5px solid #CCCCCC;
   }
+  .comment_input_container,
+  .reply_input_container{
+    border-radius: 0px;
+    margin: 10px 0px;
+  }
   .comment_input{
+    max-width: 100%;
     width: 100%;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
@@ -43,5 +49,8 @@
       right:5px;
       top: 5px;
     }
+  }
+  .entry:hover {
+    background-color: whiteSmoke;
   }
 }

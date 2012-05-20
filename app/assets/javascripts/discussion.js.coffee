@@ -17,8 +17,60 @@ class Entry
     @container = $('<div>')
     @container.append(@build_entry_container())
     @container.append(@build_children_container())
+    parent = @container
+    @reply_setup(parent)
     return @container
-  
+ 
+  reply_setup:(parent) ->
+    that = this
+    reply_id = @id
+    parent.click (evt) ->
+      if $(this).find('.reply_input_container').length
+        return
+      if $('.reply_input_container')[0]
+        $('.reply_input_container').fadeOut 'slow', ->
+          $(this).remove()
+      evt.stopPropagation()
+      placeholder = "Write a reply..."
+      well_class = "reply_input_container"
+      btn_text = "Reply"
+      comment = new Comment
+      well = comment.build(well_class,placeholder,btn_text)
+      well.hide()
+      btn = well.find('button')
+      btn.click (e) ->
+        btn.attr('disabled','true')
+        comment_text = well.find('textarea')
+        if comment_text.val() == ''
+          return
+        that.add_reply(reply_id,comment_text.val(),well)
+      parent.append(well)
+      well.addClass("children")
+      well.click (e) ->
+        e.stopPropagation()
+      $(document).click (e) ->
+        well.fadeOut 'slow', ->
+          well.remove()
+      well.fadeIn 'fast', ->
+      well.find('textarea').focus()
+ 
+  add_reply:(id,reply_text,well) ->
+    that = this
+    discuss = @discussion
+    $.post(
+      '/discussion/add_reply/' + id, {
+        text: reply_text
+      },
+      (data) ->
+        if data.status == 'success'
+          well.remove()
+          that.children.push(new Entry data.entry_info, that,)
+          socket.emit('new reply', {entry_info: data.entry_info})
+          discuss.refresh()
+        else
+          console.error(data.message)
+    )
+
   build_children_container:() ->
     @children_container = $("<div class='children'>")
     @children_container.append(entry.build()) for entry in @children
@@ -26,9 +78,6 @@ class Entry
   
   build_entry_container:() ->
     that = this
-    @reply_button = $("<button>").attr({
-      'class':'btn reply-button',
-    }).append("Reply")
     @entry_container = $('<div class="entry" id="entry'+@id+'">').append(
       $('<span class="content">').append(@response)
     ).append(
@@ -38,7 +87,6 @@ class Entry
         $('<span class="created">').append(@created)
       )
     ).append(@reply_button)
-    @discussion.comment(@reply_button,@container,true,@id)
     return @entry_container
 
   add_child:(entry_info) ->
@@ -57,6 +105,7 @@ class Discussion
     @container = $("<div class='top_level'>")
     for entry in @top_level
       @container.append(entry.build())
+    @container.append(@build_comment_box())
     return @container
   
   add_new_entry:(entry_info) ->
@@ -67,100 +116,48 @@ class Discussion
     @container[0].innerHTML = ""
     for entry in @top_level
       @container.append(entry.build())
+    @container.append(@build_comment_box())
 
-  add_new_comment:(comment_text,well) ->
+  add_new_comment:(comment_text) ->
     if comment_text == '' 
       return
     that = this
     $.post(
       '/discussion/new_comment/' + @id,
-      {text: comment_text},
+      {text: comment_text.val()},
       (data) ->
         if data.status == 'success'
-          well.remove()
+          comment_text.val('')
           that.add_new_entry(data.entry_info)
           socket.emit('new comment', {entry_info: data.entry_info})
-        else
-          console.error(data.message)
-    )
-
-  add_reply:(id,reply_text,well) ->
-    that = this
-    entry = Entry.reg[id]
-    $.post(
-      '/discussion/add_reply/' + id, {
-        text: reply_text
-      },
-      (data) ->
-        if data.status == 'success'
-          well.remove()
-          entry.children.push(new Entry data.entry_info, that,)
-          socket.emit('new reply', {entry_info: data.entry_info})
           that.refresh()
         else
           console.error(data.message)
     )
-
-  comment:(btn,parent,reply = false,reply_id = null) ->
+ 
+  build_comment_box:() ->
+    comment = new Comment
     that = this
+    well = comment.build("comment_input_container","Leave a comment...","Comment")
+    btn = well.find('button')
     btn.click (evt) ->
-      evt.stopPropagation()
-      if $('.comment_input_container')[0]
-        $('.comment_input_container').fadeOut 'fast', ->
-      well = $('<div class="well comment_input_container">')
-      placeholder = "Leave a comment..."
-      if reply
-        well.addClass('children')
-        placeholder = "Write a reply..."
-      well.hide()
-      comment_input = $('<textarea class="comment_input" placeholder="'+placeholder+'">')
-      well.append(comment_input)
-      comment_btn = $('<button class="btn">Save</button>')
-      comment_btn.click (e) ->
-        comment_btn.attr('disabled','true')
-        text = comment_input.val()
-        if reply
-          that.add_reply(reply_id,text,well)
-        else
-          that.add_new_comment(text,well)
-      well.append(comment_btn)
-      parent.append(well)
-      well.click (e) ->
-        e.stopPropagation()
-      $(document).click (e) ->
-        well.fadeOut 'slow', ->
-          well.remove()
-      well.fadeIn 'fast', ->
+      btn.attr('disable','true')
+      comment_text = well.find('textarea')
+      if comment_text.val() == ''
+        btn.attr('disable','false')
+        return
+      that.add_new_comment(comment_text)
+    return well
 
 window.Discussion = Discussion
 
-###
 class Comment
-  constructor: (btn, parent) ->
-    @btn = btn
-    @parent = parent
-
-  comment:(btn,parent,reply = false) ->
-    btn.click (evt) ->
-      evt.stopPropagation()
-      if $('.comment_input_container')[0] 
-        $('.comment_input_container').fadeOut 'fast', ->
-      well = $('<div class="well comment_input_container">')
-      if reply
-        well.addClass('children'); 
-      well.hide()
-      comment_input = $('<textarea class="comment_input">')
-      well.append(comment_input)
-      comment_btn = $('<button class="btn">Save</button>')
-      well.append(comment_btn)
-      parent.append(well)
-      well.click (e) ->
-        e.stopPropagation()
-      $(document).click (e) ->
-        well.fadeOut 'slow', ->
-          well.remove()
-      well.fadeIn 'fast', ->
-
+  build:(well_class, placeholder,btn_text) ->
+    well = $('<div class="well '+well_class+'">')
+    comment_input = $('<textarea class="comment_input" placeholder="'+placeholder+'">')
+    well.append(comment_input)
+    comment_btn = $('<button class="btn btn-primary">'+btn_text+'</button>')
+    well.append(comment_btn)
+    return well
 
 window.Comment = Comment
-###

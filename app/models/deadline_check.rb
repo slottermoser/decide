@@ -9,14 +9,19 @@ class DeadlineCheck < ActiveRecord::Base
     deadlines = DeadlineCheck.order("deadline DESC")
     count = 0
     deadlines.each do |check|
+      if check.decision.nil?
+        check.destroy
+        next
+      end
       if check.deadline - DateTime.now <= 0
         if gmail.nil?
           gmail = Gmail.new(GMAIL_LOGIN, GMAIL_PASSWORD)
         end
         count += 1
         decision = check.decision
-        subjectString = "Decision Made - " << decision.title[0...50]
-        subjectString << "..." if decision.title.length > 50
+        subjectString = "Decision Made"
+        subjectString << " - " << decision.title[0...50] unless decision.title.nil?
+        subjectString << "..." if decision.title.length > 50 unless decision.title.nil?
         bodyString = self.bodyStringForDecision(decision)
         addresses = ""
         decision.participants.each do |p|

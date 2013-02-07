@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require detect_timezone
 //= require jquery.detect_timezone
-//= require twitter/bootstrap
+//= require bootstrap
+//= require javascript_countdown
 //= require_tree .
